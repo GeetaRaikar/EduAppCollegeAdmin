@@ -24,12 +24,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
-import com.padmajeet.eduapp.wowcollege.admin.model.Batch;
-import com.padmajeet.eduapp.wowcollege.admin.model.Staff;
-import com.padmajeet.eduapp.wowcollege.admin.model.Subject;
-import com.padmajeet.eduapp.wowcollege.admin.model.TimeTable;
-import com.padmajeet.eduapp.wowcollege.admin.util.SessionManager;
-import com.padmajeet.eduapp.wowcollege.admin.util.Utility;
+import com.padmajeet.techforedu.wowcollege.admin.model.Batch;
+import com.padmajeet.techforedu.wowcollege.admin.model.Staff;
+import com.padmajeet.techforedu.wowcollege.admin.model.Subject;
+import com.padmajeet.techforedu.wowcollege.admin.model.TimeTable;
+import com.padmajeet.techforedu.wowcollege.admin.util.SessionManager;
+import com.padmajeet.techforedu.wowcollege.admin.util.Utility;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -157,8 +157,8 @@ public class FragmentTimeTable extends Fragment {
                         if (timeTable.getDay().equalsIgnoreCase(selectedDay)) {
                             timeTableDayWiseList.add(timeTable);
                             System.out.println("Equal Day   "+timeTable.getDay());
-                            System.out.println("Equal FacultyId   "+timeTable.getFacultyId());
-                            System.out.println("Equal SubjectId   "+timeTable.getSubjectId().getId());
+                            System.out.println("Equal FacultyId   "+timeTable.getStaffId());
+                            System.out.println("Equal SubjectId   "+timeTable.getSubjectId());
                         }
                     }
                     if(timeTableDayWiseList.isEmpty()){
@@ -221,17 +221,17 @@ public class FragmentTimeTable extends Fragment {
             final TimeTable timeTable = timeTableList.get(position);
 
             holder.tvFaculty.setVisibility(View.VISIBLE);
-            holder.tvSubject.setText("" + timeTable.getSubjectId().getName());
+            holder.tvSubject.setText("" + timeTable.getSubjectId());
             String faculty="";
-            if(!TextUtils.isEmpty(timeTable.getFacultyId().getId())) {
-                faculty = timeTable.getFacultyId().getFirstName() + " " + timeTable.getFacultyId().getLastName();
+            if(!TextUtils.isEmpty(timeTable.getStaffId())) {
+                faculty = timeTable.getStaffId() + " " + timeTable.getStaffId();
                 holder.tvFaculty.setText("" + faculty);
             }
             else{
                 holder.tvFaculty.setVisibility(View.GONE);
             }
-            holder.tvTime.setText("" + timeTable.getPeriodId().getTime());
-            holder.tvMins.setText(""+timeTable.getPeriodId().getDuration());
+            holder.tvTime.setText("" + timeTable.getPeriodId());
+            holder.tvMins.setText(""+timeTable.getPeriodId());
             holder.ivEditSubject.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View view) {
@@ -257,8 +257,8 @@ public class FragmentTimeTable extends Fragment {
                                 public void onClick(SweetAlertDialog sDialog) {
                                     sDialog.dismissWithAnimation();
 
-                                    timeTable.setFacultyId(selectedStaff);
-                                    timeTable.setSubjectId(selectedSubject);
+                                    timeTable.setStaffId(selectedStaff.getId());
+                                    timeTable.setSubjectId(selectedSubject.getId());
                                     timeTable.setModifiedDate(new Date());
                                     timeTable.setModifierId(loggedInUser.getId());
                                     timeTable.setModifierType("A");

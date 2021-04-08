@@ -45,13 +45,12 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
-import com.padmajeet.eduapp.wowcollege.admin.model.Batch;
-import com.padmajeet.eduapp.wowcollege.admin.model.Enquiry;
-import com.padmajeet.eduapp.wowcollege.admin.model.Parent;
-import com.padmajeet.eduapp.wowcollege.admin.model.Staff;
-import com.padmajeet.eduapp.wowcollege.admin.model.Student;
-import com.padmajeet.eduapp.wowcollege.admin.util.SessionManager;
-import com.padmajeet.eduapp.wowcollege.admin.util.Utility;
+import com.padmajeet.techforedu.wowcollege.admin.model.Batch;
+import com.padmajeet.techforedu.wowcollege.admin.model.Enquiry;
+import com.padmajeet.techforedu.wowcollege.admin.model.Parent;
+import com.padmajeet.techforedu.wowcollege.admin.model.Student;
+import com.padmajeet.techforedu.wowcollege.admin.util.SessionManager;
+import com.padmajeet.techforedu.wowcollege.admin.util.Utility;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -134,7 +133,7 @@ public class FragmentAddStudent extends Fragment {
         loggedInUserId = sessionManager.getString("loggedInUserId");
         schoolId=sessionManager.getString("schoolId");
         academicYearId= sessionManager.getString("academicYearId");
-        pDialog=Utility.createSweetAlertDialog(getContext());
+        pDialog= Utility.createSweetAlertDialog(getContext());
     }
 
     public FragmentAddStudent() {
@@ -571,10 +570,8 @@ public class FragmentAddStudent extends Fragment {
                     student.setCreatorType("A");
 
                     parent = new Parent();
-                    parent.setFather(father);
-                    parent.setMother(mother);
+                    parent.setFirstName(father);
                     parent.setMobileNumber(fatherMobileNumber);
-                    parent.setMotherNumber(motherMobileNumber);
                     parent.setAddress(address);
                     parent.setPassword("");
                     parent.setCreatorId(loggedInUserId);

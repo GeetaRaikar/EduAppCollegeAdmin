@@ -31,12 +31,12 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
-import com.padmajeet.eduapp.wowcollege.admin.model.Batch;
-import com.padmajeet.eduapp.wowcollege.admin.model.Parent;
-import com.padmajeet.eduapp.wowcollege.admin.model.Staff;
-import com.padmajeet.eduapp.wowcollege.admin.model.Student;
-import com.padmajeet.eduapp.wowcollege.admin.util.SessionManager;
-import com.padmajeet.eduapp.wowcollege.admin.util.Utility;
+import com.padmajeet.techforedu.wowcollege.admin.model.Batch;
+import com.padmajeet.techforedu.wowcollege.admin.model.Parent;
+import com.padmajeet.techforedu.wowcollege.admin.model.Staff;
+import com.padmajeet.techforedu.wowcollege.admin.model.Student;
+import com.padmajeet.techforedu.wowcollege.admin.util.SessionManager;
+import com.padmajeet.techforedu.wowcollege.admin.util.Utility;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
@@ -533,11 +533,9 @@ public class FragmentStudent extends Fragment {
                         .placeholder(R.drawable.ic_student)
                         .into(holder.ivStudentProfilePic);
             }
-            holder.tvFather.setText(""+studentParent.parent.getFather());
-            holder.tvMother.setText(""+studentParent.parent.getMother());
+            holder.tvFather.setText(""+studentParent.parent.getFirstName());
             holder.tvMobileNumber.setText(""+ studentParent.parent.getMobileNumber());
             holder.tvEmergencyContact.setText(""+studentParent.student.getMobileNumber());
-            holder.tvMotherMobileNumber.setText(""+studentParent.parent.getMotherNumber());
             holder.tvAddress.setText(""+studentParent.parent.getAddress());
             holder.tvEmailId.setText(""+studentParent.parent.getEmailId());
             /*

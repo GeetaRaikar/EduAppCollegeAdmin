@@ -36,10 +36,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.padmajeet.eduapp.wowcollege.admin.model.Batch;
-import com.padmajeet.eduapp.wowcollege.admin.model.Calendar;
-import com.padmajeet.eduapp.wowcollege.admin.util.SessionManager;
-import com.padmajeet.eduapp.wowcollege.admin.util.Utility;
+import com.padmajeet.techforedu.wowcollege.admin.model.Batch;
+import com.padmajeet.techforedu.wowcollege.admin.model.Calendar;
+import com.padmajeet.techforedu.wowcollege.admin.util.SessionManager;
+import com.padmajeet.techforedu.wowcollege.admin.util.Utility;
 
 import java.text.DateFormat;
 import java.text.ParseException;

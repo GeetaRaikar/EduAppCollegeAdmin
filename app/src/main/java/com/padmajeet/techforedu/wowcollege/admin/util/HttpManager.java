@@ -3,7 +3,7 @@ package com.padmajeet.techforedu.wowcollege.admin.util;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.padmajeet.eduapp.wowcollege.admin.R;
+import com.padmajeet.techforedu.wowcollege.admin.R;
 
 import org.json.JSONObject;
 

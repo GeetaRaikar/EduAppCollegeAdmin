@@ -15,9 +15,9 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.padmajeet.eduapp.wowcollege.admin.model.Institute;
-import com.padmajeet.eduapp.wowcollege.admin.util.SessionManager;
-import com.padmajeet.eduapp.wowcollege.admin.util.Utility;
+import com.padmajeet.techforedu.wowcollege.admin.model.Institute;
+import com.padmajeet.techforedu.wowcollege.admin.util.SessionManager;
+import com.padmajeet.techforedu.wowcollege.admin.util.Utility;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -41,7 +41,7 @@ public class FragmentAboutUs extends Fragment {
         super.onCreate(savedInstanceState);
         sessionManager = new SessionManager(getContext());;
         instituteId = sessionManager.getString("instituteId");
-        pDialog=Utility.createSweetAlertDialog(getContext());
+        pDialog= Utility.createSweetAlertDialog(getContext());
     }
 
     public FragmentAboutUs() {

@@ -44,12 +44,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
-import com.padmajeet.eduapp.wowcollege.admin.model.Batch;
-import com.padmajeet.eduapp.wowcollege.admin.model.Event;
-import com.padmajeet.eduapp.wowcollege.admin.model.EventType;
-import com.padmajeet.eduapp.wowcollege.admin.model.Staff;
-import com.padmajeet.eduapp.wowcollege.admin.util.SessionManager;
-import com.padmajeet.eduapp.wowcollege.admin.util.Utility;
+import com.padmajeet.techforedu.wowcollege.admin.model.Batch;
+import com.padmajeet.techforedu.wowcollege.admin.model.Event;
+import com.padmajeet.techforedu.wowcollege.admin.model.EventType;
+import com.padmajeet.techforedu.wowcollege.admin.util.SessionManager;
+import com.padmajeet.techforedu.wowcollege.admin.util.Utility;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -648,7 +647,7 @@ public class FragmentAddEvent extends Fragment {
             event.setTypeId(selectEventType.getId());
             event.setRecipientType("F");
             event.setCategory(category_add);
-            event.setResponses(map);
+            event.setParentResponses(map);
             event.setSchoolScope(false);
             event.setAttachmentUrl(attachmentUrl);
             eventList.add(event);
@@ -678,7 +677,7 @@ public class FragmentAddEvent extends Fragment {
                 event.setTypeId(selectEventType.getId());
                 event.setRecipientType("P");
                 event.setCategory(category_add);
-                event.setResponses(map);
+                event.setParentResponses(map);
                 event.setSchoolScope(true);
                 event.setAttachmentUrl(attachmentUrl);
                 eventList.add(event);
@@ -707,7 +706,7 @@ public class FragmentAddEvent extends Fragment {
                     event.setTypeId(selectEventType.getId());
                     event.setRecipientType("P");
                     event.setCategory(category_add);
-                    event.setResponses(map);
+                    event.setParentResponses(map);
                     event.setSchoolScope(false);
                     event.setAttachmentUrl(attachmentUrl);
                     eventList.add(event);

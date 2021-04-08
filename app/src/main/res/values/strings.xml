@@ -128,6 +128,7 @@
     <string name="selectEventType">Select Event Type</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="staff">Staff</string>
     <string name="AcademicCalendar">Academic Calendar</string>
     <string name="childName">Child\'s Name *</string>
     <string name="lastNameInitial">Last Name/Initial <p><font color="#FF0000">*</font></p></string>
@@ -178,7 +179,6 @@
     <string name="attendanceTaken">Attendance is marked for selected date. You can update.</string>
     <string name="markAttendance">Mark attendance</string>
     <string name="attendanceDaywise">Attendance Daywise</string>
-    <string name="staff">Staff</string>
     <string name="qualification">Qualification</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>

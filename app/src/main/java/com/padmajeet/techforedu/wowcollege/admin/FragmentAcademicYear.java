@@ -28,10 +28,10 @@ import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.padmajeet.eduapp.wowcollege.admin.model.AcademicYear;
-import com.padmajeet.eduapp.wowcollege.admin.model.Institute;
-import com.padmajeet.eduapp.wowcollege.admin.util.SessionManager;
-import com.padmajeet.eduapp.wowcollege.admin.util.Utility;
+import com.padmajeet.techforedu.wowcollege.admin.model.AcademicYear;
+import com.padmajeet.techforedu.wowcollege.admin.model.Institute;
+import com.padmajeet.techforedu.wowcollege.admin.util.SessionManager;
+import com.padmajeet.techforedu.wowcollege.admin.util.Utility;
 
 import java.util.ArrayList;
 import java.util.Calendar;

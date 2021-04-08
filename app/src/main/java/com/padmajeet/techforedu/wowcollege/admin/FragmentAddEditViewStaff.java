@@ -52,10 +52,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
-import com.padmajeet.eduapp.wowcollege.admin.model.Staff;
-import com.padmajeet.eduapp.wowcollege.admin.model.StaffType;
-import com.padmajeet.eduapp.wowcollege.admin.util.SessionManager;
-import com.padmajeet.eduapp.wowcollege.admin.util.Utility;
+import com.padmajeet.techforedu.wowcollege.admin.model.Staff;
+import com.padmajeet.techforedu.wowcollege.admin.model.StaffType;
+import com.padmajeet.techforedu.wowcollege.admin.util.SessionManager;
+import com.padmajeet.techforedu.wowcollege.admin.util.Utility;
 
 import java.text.DateFormat;
 import java.text.ParseException;

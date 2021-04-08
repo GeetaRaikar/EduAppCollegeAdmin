@@ -24,12 +24,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
-import com.padmajeet.eduapp.wowcollege.admin.model.AcademicYear;
-import com.padmajeet.eduapp.wowcollege.admin.model.Institute;
-import com.padmajeet.eduapp.wowcollege.admin.model.Staff;
-import com.padmajeet.eduapp.wowcollege.admin.model.StaffType;
-import com.padmajeet.eduapp.wowcollege.admin.util.SessionManager;
-import com.padmajeet.eduapp.wowcollege.admin.util.Utility;
+import com.padmajeet.techforedu.wowcollege.admin.model.AcademicYear;
+import com.padmajeet.techforedu.wowcollege.admin.model.Institute;
+import com.padmajeet.techforedu.wowcollege.admin.model.Staff;
+import com.padmajeet.techforedu.wowcollege.admin.model.StaffType;
+import com.padmajeet.techforedu.wowcollege.admin.util.SessionManager;
+import com.padmajeet.techforedu.wowcollege.admin.util.Utility;
 
 import java.util.ArrayList;
 import java.util.Arrays;

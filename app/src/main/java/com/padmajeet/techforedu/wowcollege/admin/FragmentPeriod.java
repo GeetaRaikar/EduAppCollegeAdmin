@@ -26,11 +26,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
-import com.padmajeet.eduapp.wowcollege.admin.model.Batch;
-import com.padmajeet.eduapp.wowcollege.admin.model.Period;
-import com.padmajeet.eduapp.wowcollege.admin.model.Staff;
-import com.padmajeet.eduapp.wowcollege.admin.util.SessionManager;
-import com.padmajeet.eduapp.wowcollege.admin.util.Utility;
+import com.padmajeet.techforedu.wowcollege.admin.model.Batch;
+import com.padmajeet.techforedu.wowcollege.admin.model.Period;
+import com.padmajeet.techforedu.wowcollege.admin.model.Staff;
+import com.padmajeet.techforedu.wowcollege.admin.util.SessionManager;
+import com.padmajeet.techforedu.wowcollege.admin.util.Utility;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -167,10 +167,10 @@ public class FragmentPeriod extends Fragment {
                         pDialog.show();
                     }
                     period = new Period();
-                    period.setBatchId(selectedBatch);
+                    period.setBatchId(selectedBatch.getId());
                     period.setNumber(number);
-                    period.setTime(time);
-                    period.setDuration(duration);
+                    period.setFromTime(time);
+                    period.setDurationInMin(duration);
                     period.setCreatorId(loggedInUser.getId());
                     period.setModifierId(loggedInUser.getId());
                     addPeriod();
@@ -348,12 +348,12 @@ public class FragmentPeriod extends Fragment {
             final Period period = periodList.get(position);
 
             holder.tvName.setText("" + period.getNumber());
-            holder.tvTime.setText("" + period.getTime());
+            holder.tvTime.setText("" + period.getFromTime());
             holder.ivEditPeriodName.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View view) {
                     final EditText editText = new EditText(getContext());
-                    editText.setText(period.getTime());
+                    editText.setText(period.getFromTime());
                     SweetAlertDialog dialog = new SweetAlertDialog(getContext(), SweetAlertDialog.NORMAL_TYPE)
                             .setTitleText("Edit Period Time")
                             .setConfirmText("Update")
@@ -375,7 +375,7 @@ public class FragmentPeriod extends Fragment {
                                         editText.requestFocus();
                                         return;
                                     }
-                                    period.setTime(time);
+                                    period.setFromTime(time);
                                     period.setModifiedDate(new Date());
                                     period.setModifierId(loggedInUser.getId());
 
