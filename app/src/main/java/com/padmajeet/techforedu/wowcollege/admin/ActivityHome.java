@@ -226,7 +226,7 @@ public class ActivityHome extends AppCompatActivity {
                     case R.id.nav_expense_category:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_expense_category).setChecked(true);
-                        //replaceFragment(new FragmentExpenseCategory(), getString(R.string.expenseCategory));
+                        replaceFragment(new FragmentExpenseCategory(), getString(R.string.expenseCategory));
                         break;
                     case R.id.nav_feedback_category:
                         unCheckAllMenuItems(navigationView.getMenu());
@@ -236,7 +236,7 @@ public class ActivityHome extends AppCompatActivity {
                     case R.id.nav_fee_Component:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_fee_Component).setChecked(true);
-                        //replaceFragment(new FragmentFeeComponent(), getString(R.string.feeComponent));
+                        replaceFragment(new FragmentFeeComponent(), getString(R.string.feeComponent));
                         break;
                     case R.id.nav_staff_type:
                         unCheckAllMenuItems(navigationView.getMenu());
@@ -246,7 +246,7 @@ public class ActivityHome extends AppCompatActivity {
                     case R.id.nav_document_type:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_document_type).setChecked(true);
-                        //replaceFragment(new FragmentDocumentType(), getString(R.string.documentType));
+                        replaceFragment(new FragmentDocumentType(), getString(R.string.documentType));
                         break;
                     case R.id.nav_aboutus:
                         unCheckAllMenuItems(navigationView.getMenu());

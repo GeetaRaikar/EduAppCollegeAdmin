@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_app_info">
+    app:startDestination="@+id/nav_event_type">
     <fragment
-        android:id="@+id/nav_app_info"
-        android:name="com.padmajeet.eduapp.wowcollege.admin.FragmentAppInfo"
+        android:id="@+id/nav_event_type"
+        android:name="com.padmajeet.techforedu.wowcollege.admin.FragmentEventType"
         android:label="@string/appinfo"
         tools:layout="@layout/fragment_app_info" />
 </navigation>
