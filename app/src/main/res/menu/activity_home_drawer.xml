@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="@string/home"/>
+    </group>
+
+    <item android:title="@string/communication">
+        <menu>
+            <!--
+            <item
+                android:id="@+id/nav_message"
+                android:icon="@drawable/ic_menu_message"
+                android:title="@string/message" />-->
+            <item
+                android:id="@+id/nav_event"
+                android:icon="@drawable/ic_menu_event"
+                android:title="@string/event" />
+            <!--
+            <item
+                android:id="@+id/nav_sms_email"
+                android:icon="@drawable/ic_send"
+                android:title="@string/smsEmail" />-->
+            <item
+                android:id="@+id/nav_feedback"
+                android:icon="@drawable/ic_menu_feedback"
+                android:title="@string/feedback" />
+        </menu>
+    </item>
+    <item android:title="@string/student">
+        <menu>
+            <item
+                android:id="@+id/nav_student"
+                android:icon="@drawable/ic_menu_students"
+                android:title="@string/students" />
+                <!--
+            <item
+                android:id="@+id/nav_student_kit"
+                android:icon="@drawable/ic_services"
+                android:title="@string/studentKit" />
+            <item
+                android:id="@+id/nav_student_fees"
+                android:icon="@drawable/ic_menu_rupee"
+                android:title="@string/studentFees" />-->
+            <item
+                android:id="@+id/nav_attendance"
+                android:icon="@drawable/ic_menu_attendance"
+                android:title="@string/studentAttendance"/>
+             <!--
+            <item
+                android:id="@+id/nav_birthday"
+                android:icon="@drawable/ic_menu_birthday"
+                android:title="@string/birthday"/>-->
+
+        </menu>
+    </item>
+    <!--
+    <item android:title="@string/administration">
+        <menu>
+            <item
+                android:id="@+id/nav_enquiry"
+                android:icon="@drawable/ic_menu_enquiry"
+                android:title="@string/enquiry"/>
+            <item
+                android:id="@+id/nav_expense"
+                android:icon="@drawable/ic_menu_rupee"
+                android:title="@string/expense" />
+        </menu>
+    </item>-->
+    <item android:title="@string/staffSetUp">
+        <menu>
+            <item
+                android:id="@+id/nav_staff"
+                android:icon="@drawable/ic_menu_faculty"
+                android:title="@string/staff" />
+            <item
+                android:id="@+id/nav_staff_attendance"
+                android:icon="@drawable/ic_menu_attendance"
+                android:title="@string/staffAttendance"/>
+            <item
+                android:id="@+id/nav_subject_faculty"
+                android:icon="@drawable/ic_menu_classroom"
+                android:title="@string/subjectFaculty"/>
+        </menu>
+    </item>
+    <item android:title="@string/instituteSetUp">
+        <menu>
+            <item
+                android:id="@+id/nav_school"
+                android:icon="@drawable/ic_menu_school"
+                android:title="@string/institute" />
+            <item
+                android:id="@+id/nav_batch"
+                android:icon="@drawable/ic_menu_batch"
+                android:title="@string/batch" />
+             <!--
+            <item
+                android:id="@+id/nav_section"
+                android:icon="@drawable/ic_menu_classroom"
+                android:title="@string/section" />
+            <item
+                android:id="@+id/nav_fee_structure"
+                android:icon="@drawable/ic_services"
+                android:title="@string/feeStructure" />-->
+            <item
+                android:id="@+id/nav_academic_year"
+                android:icon="@drawable/ic_menu_calendar"
+                android:title="@string/academicYear" />
+            <!--
+            <item
+                android:id="@+id/nav_holiday"
+                android:icon="@drawable/ic_menu_holiday"
+                android:title="@string/holiday"/>-->
+        </menu>
+    </item>
+    <item android:title="@string/academics">
+        <menu>
+            <!--
+            <item
+                android:id="@+id/nav_home_work"
+                android:icon="@drawable/ic_menu_homework"
+                android:title="@string/homeWork" />
+            <item
+                android:id="@+id/nav_competition"
+                android:icon="@drawable/ic_menu_winner"
+                android:title="@string/competition" />-->
+            <item
+                android:id="@+id/nav_calender"
+                android:icon="@drawable/ic_menu_calendar"
+                android:title="@string/academicCalendar" />
+            <!--
+            <item
+                android:id="@+id/nav_achievement"
+                android:icon="@drawable/ic_menu_special"
+                android:title="@string/achievement" />-->
+            <item
+                android:id="@+id/nav_subject"
+                android:icon="@drawable/ic_menu_book"
+                android:title="@string/subject" />
+        </menu>
+    </item>
+    <item android:title="@string/configuration">
+        <menu>
+            <item
+                android:id="@+id/nav_event_type"
+                android:icon="@drawable/ic_services"
+                android:title="@string/eventType" />
+            <item
+                android:id="@+id/nav_expense_category"
+                android:icon="@drawable/ic_services"
+                android:title="@string/expenseCategory" />
+            <item
+                android:id="@+id/nav_feedback_category"
+                android:icon="@drawable/ic_services"
+                android:title="@string/feedbackCategory" />
+            <item
+                android:id="@+id/nav_fee_Component"
+                android:icon="@drawable/ic_services"
+                android:title="@string/feeComponent" />
+            <item
+                android:id="@+id/nav_staff_type"
+                android:icon="@drawable/ic_services"
+                android:title="@string/staffType" />
+            <item
+                android:id="@+id/nav_document_type"
+                android:icon="@drawable/ic_services"
+                android:title="@string/documentType" />
+        </menu>
+    </item>
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_aboutus"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="@string/aboutUs" />
+            <item
+                android:id="@+id/nav_appinfo"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/appinfo" />
+            <item
+                android:id="@+id/nav_support"
+                android:icon="@drawable/ic_support_large"
+                android:title="@string/support" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/logout" />
+        </menu>
+    </item>
+
+</menu>

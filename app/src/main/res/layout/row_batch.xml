@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            >
+            <ImageView
+                android:id="@+id/ivProfilePic"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/nav_header_desc" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvBatchName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:gravity="left"
+                android:layout_marginBottom="3dp"
+                android:textSize="16sp" />
+                <!--
+                <TextView
+                    android:id="@+id/tvLongName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="3dp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvYearLbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="2dp"
+                        android:text="@string/years" />
+                    <TextView
+                        android:id="@+id/tvMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tvMonthLbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="2dp"
+                        android:text="@string/months" />
+                </LinearLayout>
+                -->
+            </LinearLayout>
+            <!--
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:layout_marginRight="8dp"
+                android:gravity="center"/>
+                -->
+            <ImageView
+                android:id="@+id/ivEditBatch"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center|right"
+                android:clickable="true"
+                android:src="@drawable/ic_edit"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>
