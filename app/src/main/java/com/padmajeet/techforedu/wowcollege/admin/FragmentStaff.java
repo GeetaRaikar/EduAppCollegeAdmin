@@ -78,7 +78,7 @@ public class FragmentStaff extends Fragment {
         String userJson=sessionManager.getString("loggedInUser");
         loggedInUser=gson.fromJson(userJson, Staff.class);
         loggedInUserId = sessionManager.getString("loggedInUserId");
-        academicYearId= sessionManager.getString("AcademicYearId");
+        academicYearId= sessionManager.getString("academicYearId");
         instituteId=sessionManager.getString("instituteId");
         pDialog = Utility.createSweetAlertDialog(getContext());
     }
@@ -88,8 +88,8 @@ public class FragmentStaff extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_staff_type, container, false);
-        ((ActivityHome) getActivity()).getSupportActionBar().setTitle(getString(R.string.staffType));
+        view = inflater.inflate(R.layout.fragment_staff, container, false);
+        ((ActivityHome) getActivity()).getSupportActionBar().setTitle(getString(R.string.staff));
         return view;
     }
 
@@ -102,6 +102,10 @@ public class FragmentStaff extends Fragment {
         rvStaffType.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         //rvStaff.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         llNoList = view.findViewById(R.id.llNoList);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        rvStaff.setLayoutManager(layoutManager);
+
         fabAddStaff = view.findViewById(R.id.fabAddStaff);
 
         fabAddStaff.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +123,9 @@ public class FragmentStaff extends Fragment {
     }
 
     private void getStaffType(){
+        if(staffTypeList.size()>0) {
+            staffTypeList.clear();
+        }
         staffTypeCollectionRef.whereEqualTo("instituteId",instituteId)
                 .orderBy("type", Query.Direction.ASCENDING)
                 .get()
@@ -153,7 +160,9 @@ public class FragmentStaff extends Fragment {
             pDialog.show();
         }
         System.out.println("selectedStaffTypeId- "+selectedStaffTypeId);
-        staffList.clear();
+        if(staffList.size()>0) {
+            staffList.clear();
+        }
         staffCollectionRef
                 .whereEqualTo("staffTypeId",selectedStaffTypeId)
                 .whereEqualTo("instituteId",instituteId)

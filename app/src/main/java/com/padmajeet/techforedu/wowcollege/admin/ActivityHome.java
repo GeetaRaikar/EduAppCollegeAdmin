@@ -161,7 +161,7 @@ public class ActivityHome extends AppCompatActivity {
                     case R.id.nav_subject_faculty:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_subject_faculty).setChecked(true);
-                        //replaceFragment(new FragmentBatchFaculty(), getString(R.string.batchFaculty));
+                        replaceFragment(new FragmentSubjectFaculty(), getString(R.string.subjectFaculty));
                         break;
                     case R.id.nav_school:
                         unCheckAllMenuItems(navigationView.getMenu());

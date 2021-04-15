@@ -171,7 +171,7 @@ public class FragmentSubjectFaculty extends Fragment {
             bottomSheetDialog.setContentView(view);
             tvError = view.findViewById(R.id.tvError);
             spClass = view.findViewById(R.id.spClass);
-            spSubject = view.findViewById(R.id.spSection);
+            spSubject = view.findViewById(R.id.spSubject);
             spFaculty = view.findViewById(R.id.spFaculty);
             btnSave = view.findViewById(R.id.btnSave);
             if (batchList.size() != 0) {

@@ -11,7 +11,7 @@ public class StaffAttendance {
     private Date date;
     private Boolean isLate;
     private int lateTimeInMin;
-    private String schoolId;
+    private String instituteId;
     private String status;//F - Full Day, H - Half Day, A - Absent, L - Leave, LT - Late
     private String userId;
     private String userTypeId;
@@ -64,12 +64,12 @@ public class StaffAttendance {
         this.lateTimeInMin = lateTimeInMin;
     }
 
-    public String getSchoolId() {
-        return schoolId;
+    public String getInstituteId() {
+        return instituteId;
     }
 
-    public void setSchoolId(String schoolId) {
-        this.schoolId = schoolId;
+    public void setInstituteId(String instituteId) {
+        this.instituteId = instituteId;
     }
 
     public String getStatus() {

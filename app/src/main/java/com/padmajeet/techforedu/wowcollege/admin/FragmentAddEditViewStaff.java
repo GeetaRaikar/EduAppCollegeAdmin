@@ -157,7 +157,7 @@ public class FragmentAddEditViewStaff extends Fragment {
         rvStaffType.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         btnUpdate = view.findViewById(R.id.btnUpdate);
         btnSave = view.findViewById(R.id.btnSave);
-
+        gson=Utility.getGson();
         if(getArguments()==null){//Add Mode
             getStaffType();
             llSelectStaff.setVisibility(View.VISIBLE);

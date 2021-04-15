@@ -73,7 +73,7 @@ public class FragmentTakeStaffAttendance extends Fragment {
     private CollectionReference staffCollectionRef = db.collection("Staff");
     private CollectionReference staffTypeCollectionRef = db.collection("StaffType");
     private CollectionReference staffAttendanceCollectionRef = db.collection("StaffAttendance");
-    private String loggedInUserId,academicYearId,schoolId;
+    private String loggedInUserId,academicYearId,instituteId;
     private Gson gson;
     private Staff loggedInUser;
     private StaffType selectedStaffType;
@@ -113,7 +113,7 @@ public class FragmentTakeStaffAttendance extends Fragment {
         loggedInUser=gson.fromJson(userJson, Staff.class);
         loggedInUserId = sessionManager.getString("loggedInUserId");
         academicYearId= sessionManager.getString("academicYearId");
-        schoolId=sessionManager.getString("schoolId");
+        instituteId=sessionManager.getString("instituteId");
         pDialog = Utility.createSweetAlertDialog(getContext());
     }
 
@@ -260,7 +260,7 @@ public class FragmentTakeStaffAttendance extends Fragment {
             staffTypeList.clear();
         }
         staffTypeCollectionRef
-                .whereEqualTo("schoolId",schoolId)
+                .whereEqualTo("instituteId",instituteId)
                 .orderBy("type", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -373,7 +373,7 @@ public class FragmentTakeStaffAttendance extends Fragment {
             employeeAttendanceList.clear();
         }
         staffCollectionRef
-                .whereEqualTo("schoolId",schoolId)
+                .whereEqualTo("instituteId",instituteId)
                 .whereEqualTo("staffTypeId", selectedStaffType.getId())
                 .whereIn("status", Arrays.asList("A","F"))
                 .get()
@@ -396,7 +396,7 @@ public class FragmentTakeStaffAttendance extends Fragment {
                                     tempAttendance.setDate(attendance_date);
                                     tempAttendance.setIsLate(false);
                                     tempAttendance.setLateTimeInMin(0);
-                                    tempAttendance.setSchoolId(schoolId);
+                                    tempAttendance.setInstituteId(instituteId);
                                     tempAttendance.setStatus("F");
                                     tempAttendance.setUserId(staff.getId());
                                     tempAttendance.setUserTypeId(selectedStaffType.getId());
@@ -576,7 +576,7 @@ public class FragmentTakeStaffAttendance extends Fragment {
             attendanceList.clear();
         }
         staffAttendanceCollectionRef
-                .whereEqualTo("schoolId",schoolId)
+                .whereEqualTo("instituteId",instituteId)
                 .whereEqualTo("academicYearId", academicYearId)
                 .whereEqualTo("userTypeId", selectedStaffType.getId())
                 .whereEqualTo("date",attendance_date)
