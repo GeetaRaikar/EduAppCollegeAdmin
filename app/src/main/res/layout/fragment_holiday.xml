@@ -8,36 +8,16 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    tools:context=".FragmentStaff">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvStaffType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:scrollbars="horizontal" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-
-        android:background="@color/colorPrimary" />
+    tools:context=".FragmentHoliday">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorGreyLight">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvStaff"
+            android:id="@+id/rvHoliday"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
             android:scrollbars="vertical" />
 
         <LinearLayout
@@ -69,15 +49,14 @@
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddStaff"
+            android:id="@+id/addHoliday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|left"
             android:layout_margin="@dimen/fab_margin"
-            android:src="@drawable/ic_menu_faculty"
+            android:src="@drawable/ic_menu_holiday"
             android:tint="@color/colorWhite"
             app:backgroundTint="@color/colorPrimary" />
     </FrameLayout>
-
 
 </LinearLayout>

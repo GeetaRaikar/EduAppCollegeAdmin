@@ -22,6 +22,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"
+                android:src="@drawable/ic_menu_batch"
                 android:contentDescription="@string/nav_header_desc" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,7 +39,6 @@
                 android:gravity="left"
                 android:layout_marginBottom="3dp"
                 android:textSize="16sp" />
-                <!--
                 <TextView
                     android:id="@+id/tvLongName"
                     android:layout_width="match_parent"
@@ -46,62 +46,7 @@
                     android:textSize="12sp"
                     android:layout_marginBottom="3dp"
                     />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/tvYear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textStyle="bold"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/tvYearLbl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="2dp"
-                        android:text="@string/years" />
-                    <TextView
-                        android:id="@+id/tvMonth"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textStyle="bold"
-                        android:textSize="14sp" />
-                    <TextView
-                        android:id="@+id/tvMonthLbl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="2dp"
-                        android:text="@string/months" />
-                </LinearLayout>
-                -->
             </LinearLayout>
-            <!--
-            <TextView
-                android:id="@+id/tvType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/colorWhite"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:layout_marginRight="8dp"
-                android:gravity="center"/>
-                -->
             <ImageView
                 android:id="@+id/ivEditBatch"
                 android:layout_width="wrap_content"

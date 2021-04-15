@@ -286,6 +286,26 @@
 
 
                 <EditText
+                    android:id="@+id/etEmailId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:hint="@string/emailId"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorBlack"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorGrey">
+
+
+                <EditText
                     android:id="@+id/etJoiningYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -326,13 +346,53 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/colorGrey">
 
-
                 <EditText
-                    android:id="@+id/etFatherName"
+                    android:id="@+id/etEmergencyContact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorGrey"
-                    android:hint="@string/father"
+                    android:hint="@string/EmergencyPhone"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorBlack"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorGrey">
+
+
+                <EditText
+                    android:id="@+id/etFatherFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:hint="@string/fatherFirstName"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorBlack"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorGrey">
+
+
+                <EditText
+                    android:id="@+id/etFatherMiddleName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGrey"
+                    android:hint="@string/fatherMiddleName"
                     android:imeOptions="actionNext"
                     android:inputType="textPersonName"
                     android:singleLine="true"
@@ -362,28 +422,7 @@
                     android:textSize="15sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/colorGrey">
-
-
-                <EditText
-                    android:id="@+id/etMotherName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorGrey"
-                    android:hint="@string/motherName"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPersonName"
-                    android:singleLine="true"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorBlack"
-                    android:textSize="15sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
+            <!--
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -404,45 +443,7 @@
                     android:textSize="15sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/colorGrey">
-
-                <EditText
-                    android:id="@+id/etEmergencyContact"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorGrey"
-                    android:hint="@string/EmergencyPhone"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorBlack"
-                    android:textSize="15sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/colorGrey">
-
-
-                <EditText
-                    android:id="@+id/etEmailId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorGrey"
-                    android:hint="@string/emailId"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPersonName"
-                    android:singleLine="true"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorBlack"
-                    android:textSize="15sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+            -->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

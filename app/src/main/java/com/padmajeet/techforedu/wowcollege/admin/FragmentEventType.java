@@ -78,7 +78,7 @@ public class FragmentEventType extends Fragment {
             pDialog.show();
         }
         eventTypeListener = eventTypeCollectionRef
-                .whereEqualTo("instituteId", instituteId)
+                    .whereEqualTo("instituteId", instituteId)
                 .orderBy("name", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override

@@ -7,6 +7,7 @@ import java.util.Date;
 public class SubjectFaculty {
 	@Exclude
 	private String id;
+	private String academicYearId;
 	private String subjectId;
 	private String facultyId;
 	private String status = "A";
@@ -96,5 +97,13 @@ public class SubjectFaculty {
 
 	public void setModifierType(String modifierType) {
 		this.modifierType = modifierType;
+	}
+
+	public String getAcademicYearId() {
+		return academicYearId;
+	}
+
+	public void setAcademicYearId(String academicYearId) {
+		this.academicYearId = academicYearId;
 	}
 }

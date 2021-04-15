@@ -156,7 +156,7 @@ public class ActivityHome extends AppCompatActivity {
                     case R.id.nav_staff_attendance:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_staff_attendance).setChecked(true);
-                        //replaceFragment(new FragmentStaffAttendance(), getString(R.string.staffAttendance));
+                        replaceFragment(new FragmentTakeStaffAttendance(), getString(R.string.staffAttendance));
                         break;
                     case R.id.nav_subject_faculty:
                         unCheckAllMenuItems(navigationView.getMenu());
@@ -166,33 +166,34 @@ public class ActivityHome extends AppCompatActivity {
                     case R.id.nav_school:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_school).setChecked(true);
-                        //replaceFragment(new FragmentSchool(), getString(R.string.school));
+                        replaceFragment(new FragmentInstitute(), getString(R.string.institute));
                         break;
                     case R.id.nav_batch:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_batch).setChecked(true);
                         replaceFragment(new FragmentBatch(), getString(R.string.batch));
                         break;
-                    /*case R.id.nav_section:
+                    case R.id.nav_section:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_section).setChecked(true);
-                        //replaceFragment(new FragmentSection(), getString(R.string.section));
+                        replaceFragment(new FragmentSection(), getString(R.string.section));
                         break;
                     case R.id.nav_fee_structure:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_fee_structure).setChecked(true);
-                        //replaceFragment(new FragmentFeeStructure(), getString(R.string.feeStructure));
-                        break;*/
+                        replaceFragment(new FragmentFeeStructure(), getString(R.string.feeStructure));
+                        break;
                     case R.id.nav_academic_year:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_academic_year).setChecked(true);
                         replaceFragment(new FragmentAcademicYear(), getString(R.string.academicYear));
                         break;
-                    /*case R.id.nav_holiday:
+                    case R.id.nav_holiday:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_holiday).setChecked(true);
-                        //replaceFragment(new FragmentHoliday(), getString(R.string.holiday));
+                        replaceFragment(new FragmentHoliday(), getString(R.string.holiday));
                         break;
+                    /*
                     case R.id.nav_home_work:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_home_work).setChecked(true);

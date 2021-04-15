@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreyLight"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:id="@+id/activity_register_user"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/instituteName"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etSchoolName"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditSchoolName"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/shortInstituteName"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etShortName"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditShortName"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/mission"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etMission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@drawable/rectangle"
+                android:enabled="false"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:minLines="6"
+                android:padding="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <ImageView
+                android:id="@+id/ivEditMission"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/vision"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etVision"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@drawable/rectangle"
+                android:enabled="false"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:minLines="6"
+                android:padding="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <ImageView
+                android:id="@+id/ivEditVision"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/aboutInstitute"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@drawable/rectangle"
+                android:enabled="false"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:minLines="6"
+                android:padding="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <ImageView
+                android:id="@+id/ivEditAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/addressForStudent"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@drawable/rectangle"
+                android:enabled="false"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:minLines="6"
+                android:padding="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <ImageView
+                android:id="@+id/ivEditAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/primaryContactNo"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etPrimaryContactNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="phone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <ImageView
+                android:id="@+id/ivEditPrimaryContactNo"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/secondaryContactNo"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etSecondaryContactNo"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="phone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditSecondaryContactNo"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/emailId"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etEmailId"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditEmailId"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/establishmentYear"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etEstablishmentYear"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditEstablishmentYear"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/currency"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etCurrency"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/currencySymbol"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etCurrencySymbol"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditCurrencySymbol"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/instituteLogo"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <ImageView
+                android:id="@+id/ivSchoolLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:paddingRight="5dp"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+
+                <FrameLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circle_color_primary_dark"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/ivEditSchoolLogo"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_school" />
+
+                    <ImageButton
+                        android:id="@+id/ibChoosePhoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|right"
+                        android:background="@color/float_transparent"
+                        android:src="@drawable/ic_camera_small" />
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/add_btn_back"
+            android:minHeight="40dp"
+            android:text="@string/update"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

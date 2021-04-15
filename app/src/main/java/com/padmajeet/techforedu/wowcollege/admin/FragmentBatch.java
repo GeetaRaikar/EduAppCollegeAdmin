@@ -81,18 +81,14 @@ public class FragmentBatch extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference batchCollectionRef = db.collection("Batch");
     //private CollectionReference sectionCollectionRef = db.collection("Section");
-    private String name, longName, sectionName, classType;
-    private int selectedYear, selectedMonth;
-    private EditText etBatchName, etBatchLongName, etSection;
+    private String name, longName, sectionName;
+    private EditText etBatchName, etBatchLongName;
     private ListenerRegistration batchListener;
     private RecyclerView rvBatch;
     private RecyclerView.Adapter batchAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Button btnSave;
-    private Spinner spYear, spMonth;
-    private RadioButton rbRegular, rbSpecial;
     //private Section section;
-    private TextView tvYear, tvMonth;
     private Staff loggedInUser;
     private SweetAlertDialog pDialog;
     private String instituteId;
@@ -119,8 +115,7 @@ public class FragmentBatch extends Fragment {
         }
         batchListener = batchCollectionRef
                 .whereEqualTo("instituteId", instituteId)
-                //.orderBy("eligibleYears", Query.Direction.ASCENDING)
-                //.orderBy("eligibleMonths", Query.Direction.ASCENDING)
+                .orderBy("name", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
@@ -169,7 +164,6 @@ public class FragmentBatch extends Fragment {
         storageReference= FirebaseStorage.getInstance().getReference("Images");
     }
 
-
     public FragmentBatch() {
         // Required empty public constructor
     }
@@ -207,25 +201,7 @@ public class FragmentBatch extends Fragment {
             bottomSheetDialog = new BottomSheetDialog(getContext());//new BottomSheetDialog(this,R.style.BottomSheetDialog)
             bottomSheetDialog.setContentView(view);
             etBatchName = view.findViewById(R.id.etBatchName);
-            /*
             etBatchLongName = view.findViewById(R.id.etBatchLongName);
-            rbRegular = view.findViewById(R.id.rbRegular);
-            rbSpecial = view.findViewById(R.id.rbSpecial);
-            etSection = view.findViewById(R.id.etSectionName);
-            spYear = view.findViewById(R.id.spYears);
-            ivProfilePic=view.findViewById(R.id.ivProfilePic);
-            ibChoosePhoto=view.findViewById(R.id.ibChoosePhoto);
-            getAllYears();
-            spMonth = view.findViewById(R.id.spMonth);
-            getAllMonths();
-
-            ibChoosePhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    showFileChooser();
-                }
-            });
-            */
             btnSave = view.findViewById(R.id.btnSave);
             btnSave.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -255,7 +231,6 @@ public class FragmentBatch extends Fragment {
                             }
                         }
                     }
-                    /*
                     longName = etBatchLongName.getText().toString().trim();
                     if (TextUtils.isEmpty(longName)) {
                         etBatchLongName.setError("Enter long name");
@@ -268,41 +243,19 @@ public class FragmentBatch extends Fragment {
                             return;
                         }
                     }
-                    if (rbRegular.isChecked()) {
-                        classType = "R";
-                    } else {
-                        classType = "S";
-                    }
-
-                    sectionName = etSection.getText().toString().trim();
-                    if (TextUtils.isEmpty(sectionName)) {
-                        etSection.setError("Enter Section name");
-                        etSection.requestFocus();
-                        return;
-                    }else {
-                        if(Utility.isNumericWithSpace(sectionName)){
-                            etSection.setError("Invalid Section name");
-                            etSection.requestFocus();
-                            return;
-                        }
-                    }
-                    */
                     if (pDialog == null && !pDialog.isShowing()) {
                         pDialog.show();
                     }
                     batch = new Batch();
                     batch.setInstituteId(instituteId);
                     batch.setName(name);
-                    //batch.setLongName(longName);
+                    batch.setLongName(longName);
                     batch.setStatus("A");
-                    //batch.setEligibleYears(selectedYear);
-                    //batch.setEligibleMonths(selectedMonth);
-                    //batch.setBatchType(classType);
                     batch.setCreatorId(loggedInUserId);
                     batch.setModifierId(loggedInUserId);
                     batch.setCreatorType("A");
                     batch.setModifierType("A");
-                    //batch.setImageUrl(null);
+                    batch.setImageUrl(null);
                     if(imageUri==null){
                         addBatch(batch);
                     }else{
@@ -404,19 +357,14 @@ public class FragmentBatch extends Fragment {
         String batchName;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            public TextView BatchName, tvLongName, tvYear, tvMonth, tvType;
+            public TextView BatchName, tvLongName;
             public ImageView ivEditBatchName, ivProfilePic;
 
             public MyViewHolder(View view) {
                 super(view);
                 BatchName = view.findViewById(R.id.tvBatchName);
                 ivEditBatchName = (ImageView) view.findViewById(R.id.ivEditBatch);
-                /*
-                ivProfilePic = (ImageView) view.findViewById(R.id.ivProfilePic);
                 tvLongName = view.findViewById(R.id.tvLongName);
-                tvYear = view.findViewById(R.id.tvYear);
-                tvMonth = view.findViewById(R.id.tvMonth);
-                tvType = view.findViewById(R.id.tvType);*/
             }
         }
 
@@ -437,32 +385,8 @@ public class FragmentBatch extends Fragment {
         public void onBindViewHolder(final MyViewHolder holder, int position) {
             final Batch batch = batchList.get(position);
             holder.BatchName.setText("" + batch.getName());
-            /*
             holder.tvLongName.setText("" + batch.getLongName());
-            holder.tvYear.setText("" + batch.getEligibleYears());
-            holder.tvMonth.setText("" + batch.getEligibleMonths());
-            holder.tvType.setText("" + batch.getBatchType());
-            if (batch.getBatchType().equals("R")) {
-                holder.tvType.setBackgroundColor(getResources().getColor(R.color.main_blue_color));
-            } else {
-                holder.tvType.setBackgroundColor(getResources().getColor(R.color.colorOrange));
-            }
-            holder.tvType.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String txt = holder.tvType.getText().toString().trim();
-                    if (txt.equals("R")) {
-                        holder.tvType.setText("REGULAR");
-                    } else if (txt.equals("S")) {
-                        holder.tvType.setText("SPECIAL");
-                    } else if (txt.equals("REGULAR")) {
-                        holder.tvType.setText("R");
-                    } else if (txt.equals("SPECIAL")) {
-                        holder.tvType.setText("S");
-                    }
-                }
-            });
-            */
+
             /*
             holder.llImage.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
@@ -517,29 +441,10 @@ public class FragmentBatch extends Fragment {
                     final View dialogLayout = inflater.inflate(R.layout.dialog_edit_batch, null);
                     final EditText etName = dialogLayout.findViewById(R.id.etBatchName);
                     etName.setText("" + batch.getName());
-                    /*
                     final EditText etLongName = dialogLayout.findViewById(R.id.etBatchLongName);
                     etLongName.setText("" + batch.getLongName());
-                    rbRegular = dialogLayout.findViewById(R.id.rbRegular);
-                    rbSpecial = dialogLayout.findViewById(R.id.rbSpecial);
-                    if (batch.getBatchType().equals("R")) {
-                        rbRegular.setChecked(true);
-                    } else {
-                        rbSpecial.setChecked(true);
-                    }
-
-                    spYear = dialogLayout.findViewById(R.id.spYears);
-                    getAllYears();
-                    selectedYear = batch.getEligibleYears();
-                    spYear.setSelection(selectedYear);
-
-                    spMonth = dialogLayout.findViewById(R.id.spMonth);
-                    getAllMonths();
-                    selectedMonth = batch.getEligibleMonths();
-                    spMonth.setSelection(selectedMonth);
-                    */
                     SweetAlertDialog dialog = new SweetAlertDialog(getContext(), SweetAlertDialog.NORMAL_TYPE)
-                            .setTitleText("Edit Class")
+                            .setTitleText("Edit Batch")
                             .setConfirmText("Update")
                             .setCustomView(dialogLayout)
                             .setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
@@ -553,12 +458,12 @@ public class FragmentBatch extends Fragment {
                                 public void onClick(SweetAlertDialog sDialog) {
                                     batchName = etName.getText().toString().trim();
                                     if (TextUtils.isEmpty(batchName)) {
-                                        etName.setError("Enter class name");
+                                        etName.setError("Enter batch name");
                                         etName.requestFocus();
                                         return;
                                     }else {
                                         if(Utility.isNumericWithSpace(batchName)){
-                                            etName.setError("Invalid class name");
+                                            etName.setError("Invalid batch name");
                                             etName.requestFocus();
                                             return;
                                         }else {
@@ -581,7 +486,6 @@ public class FragmentBatch extends Fragment {
                                             }
                                         }
                                     }
-                                    /*
                                     String batchLongName = etLongName.getText().toString().trim();
                                     if (TextUtils.isEmpty(batchLongName)) {
                                         etLongName.setError("Enter long name");
@@ -593,19 +497,11 @@ public class FragmentBatch extends Fragment {
                                             etLongName.requestFocus();
                                             return;
                                         }
-                                    }*/
+                                    }
                                     batch.setName(batchName);
-                                    //batch.setLongName(batchLongName);
+                                    batch.setLongName(batchLongName);
                                     batch.setModifiedDate(new Date());
                                     batch.setModifierId(loggedInUserId);
-                                    /*
-                                    batch.setEligibleYears(selectedYear);
-                                    batch.setEligibleMonths(selectedMonth);
-                                    if (rbRegular.isChecked()) {
-                                        batch.setBatchType("R");
-                                    } else {
-                                        batch.setBatchType("S");
-                                    }*/
                                     batch.setModifierType("A");
                                     sDialog.dismissWithAnimation();
                                     if(pDialog==null && !pDialog.isShowing()) {
@@ -659,7 +555,7 @@ public class FragmentBatch extends Fragment {
                         */
                         SweetAlertDialog dialog = new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Success")
-                                .setContentText("Class successfully added")
+                                .setContentText("Batch successfully added")
                                 .setConfirmText("Ok")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
@@ -683,52 +579,6 @@ public class FragmentBatch extends Fragment {
                     }
                 });
     }
-
-    private void getAllYears() {
-        final List<Integer> years = new ArrayList<Integer>();
-        for (int i = 0; i <= 10; i++) {
-            years.add(i);
-        }
-
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getContext(), android.R.layout.simple_spinner_item, years);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spYear.setAdapter(adapter);
-
-        spYear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedYear = years.get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
-
-    private void getAllMonths() {
-        final List<Integer> months = new ArrayList<>();
-        for (int i = 0; i <= 12; i++) {
-            months.add(i);
-        }
-        ArrayAdapter<Integer> monthesAdaptor = new ArrayAdapter<Integer>(getContext(), android.R.layout.simple_spinner_item, months);
-        monthesAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spMonth.setAdapter(monthesAdaptor);
-
-        spMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedMonth = months.get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
-
     private void addSection() {
         /*
         sectionCollectionRef

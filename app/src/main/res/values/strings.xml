@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Wow! College Admin</string>
+    <string name="app_name">MGI Admin</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -58,7 +58,7 @@
     <string name="faculties">Faculties</string>
     <string name="parent">Parent</string>
     <string name="enquiry">Enquiry</string>
-    <string name="institute">College</string>
+    <string name="institute">Institute</string>
     <string name="fatherName">Father</string>
     <string name="motherName">Mother</string>
     <string name="longName">Long Name</string>
@@ -238,6 +238,10 @@
     <string name="noBatch">Please create batch.</string>
     <string name="noEventType">Please create event type.</string>
     <string name="subjectFaculty">Subject Faculty</string>
+    <string name="fatherFirstName">Father\'s First Name *</string>
+    <string name="fatherMiddleName">Father\'s Middle Name</string>
+    <string name="mobileNumberReq">Mobile Number *</string>
+    <string name="addSubjectFaculty">Add Subject Faculty</string>
     <string-array name="payment_option_array">
         <item>Cash</item>
         <item>Cheque</item>

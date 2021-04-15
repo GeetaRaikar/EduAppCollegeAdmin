@@ -29,6 +29,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.padmajeet.techforedu.wowcollege.admin.model.Staff;
@@ -47,6 +48,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  */
 public class FragmentStaff extends Fragment {
 
+    private View view;
     private Gson gson;
     private String loggedInUserId,academicYearId,instituteId;
     private Staff loggedInUser;
@@ -86,7 +88,9 @@ public class FragmentStaff extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_staff, container, false);
+        view = inflater.inflate(R.layout.fragment_staff_type, container, false);
+        ((ActivityHome) getActivity()).getSupportActionBar().setTitle(getString(R.string.staffType));
+        return view;
     }
 
     @Override
@@ -116,6 +120,7 @@ public class FragmentStaff extends Fragment {
 
     private void getStaffType(){
         staffTypeCollectionRef.whereEqualTo("instituteId",instituteId)
+                .orderBy("type", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

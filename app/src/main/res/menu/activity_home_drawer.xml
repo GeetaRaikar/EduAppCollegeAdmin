@@ -97,7 +97,6 @@
                 android:id="@+id/nav_batch"
                 android:icon="@drawable/ic_menu_batch"
                 android:title="@string/batch" />
-             <!--
             <item
                 android:id="@+id/nav_section"
                 android:icon="@drawable/ic_menu_classroom"
@@ -105,16 +104,15 @@
             <item
                 android:id="@+id/nav_fee_structure"
                 android:icon="@drawable/ic_services"
-                android:title="@string/feeStructure" />-->
+                android:title="@string/feeStructure" />
             <item
                 android:id="@+id/nav_academic_year"
                 android:icon="@drawable/ic_menu_calendar"
                 android:title="@string/academicYear" />
-            <!--
             <item
                 android:id="@+id/nav_holiday"
                 android:icon="@drawable/ic_menu_holiday"
-                android:title="@string/holiday"/>-->
+                android:title="@string/holiday"/>
         </menu>
     </item>
     <item android:title="@string/academics">

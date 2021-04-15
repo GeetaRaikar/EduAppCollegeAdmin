@@ -37,7 +37,6 @@
             android:text="Ex: LKG"
             android:textColor="@color/labelColor"
             android:textSize="@dimen/lableSize" />
-        <!--
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,97 +64,5 @@
             android:text="Ex: Lower Kinder Garten"
             android:textColor="@color/labelColor"
             android:textSize="@dimen/lableSize" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select class type"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="8dp"
-        />
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <RadioButton
-            android:id="@+id/rbRegular"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/Regular"
-            android:checked="true"/>
-
-        <RadioButton
-            android:id="@+id/rbSpecial"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/Special"
-            />
-
-    </RadioGroup>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select age criteria"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="8dp"
-        />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:drawableLeft="@drawable/ic_calendar_small"
-                android:drawablePadding="@dimen/drawablePaddingSize"
-                android:text="@string/selectYear"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="15sp" />
-
-            <Spinner
-                android:id="@+id/spYears"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:prompt="@string/selectYear"
-                android:spinnerMode="dialog" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:text="@string/selectMonth"
-                android:drawableLeft="@drawable/ic_calendar_small"
-                android:drawablePadding="@dimen/drawablePaddingSize"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="15sp" />
-
-            <Spinner
-                android:id="@+id/spMonth"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:prompt="@string/selectMonth"
-                android:spinnerMode="dialog" />
-        </LinearLayout>
-        -->
 
 </LinearLayout>

@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreyLight"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:id="@+id/activity_register_user"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+        <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_class_small"
+                android:drawablePadding="@dimen/drawablePaddingSize"
+                android:text="@string/selectSection"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <Spinner
+                android:id="@+id/spSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:enabled='false'
+                android:prompt="@string/selectSection"
+                android:spinnerMode="dialog" />
+
+            <ImageView
+                android:id="@+id/ivEditSection"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvUSNLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/usn"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etUSN"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditUSN"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvFirstNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/firstName"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etFirstName"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditFirstName"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/lastName"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etLastName"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvMobileNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/mobileNumberReq"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etMobileNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="phone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <ImageView
+                android:id="@+id/ivEditMobileNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llEmailId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="EmailId"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etEmailId"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvFatherFirstNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/fatherFirstName"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etFatherFirstName"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditFatherFirstName"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvFatherMiddleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/fatherMiddleName"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etFatherMiddleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="phone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <ImageView
+                android:id="@+id/ivEditFatherMiddleName"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvFatherMobileNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/FatherPhone"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etFatherMobileNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="phone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <ImageView
+                android:id="@+id/ivEditFatherMobileNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="@string/addressForStudent"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <EditText
+                android:id="@+id/etAddress"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="@color/colorGrey" />
+
+            <ImageView
+                android:id="@+id/ivEditAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inactive"
+                android:textColor="@color/colorRed"
+                android:textSize="15sp" />
+
+            <Switch
+                android:id="@+id/swStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/active"
+                android:textColor="@color/colorGreenDark"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/add_btn_back"
+            android:minHeight="40dp"
+            android:text="@string/update"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

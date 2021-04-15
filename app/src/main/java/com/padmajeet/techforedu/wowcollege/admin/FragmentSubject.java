@@ -106,8 +106,7 @@ public class FragmentSubject extends Fragment {
         }
         batchCollectionRef
                 .whereEqualTo("instituteId", instituteId)
-                //.orderBy("eligibleYears", Query.Direction.ASCENDING)
-                //.orderBy("eligibleMonths", Query.Direction.ASCENDING)
+                .orderBy("name", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

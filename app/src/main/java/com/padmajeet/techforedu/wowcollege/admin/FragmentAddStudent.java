@@ -75,10 +75,10 @@ import static android.app.Activity.RESULT_OK;
  */
 public class FragmentAddStudent extends Fragment {
     private String usn, firstName, lastName, mobileNumber, father, joiningYear,mother,fatherMobileNumber,motherMobileNumber,emergencyContactNumber,address,emailId,uniformSize,shoeSize;
-    private EditText etUSN, etFirstName, etLastName, etMobileNumber, etDob, etJoiningYear,etFather,etMother,etFatherMobileNumber,etEmailId,etUniformSize,etShoeSize;
+    private EditText etUSN, etFirstName, etLastName, etMobileNumber, etDob, etJoiningYear,etFatherFirstName,etFatherMiddleName,etFatherMobileNumber,etEmailId,etUniformSize,etShoeSize;
     private EditText etMotherMobileNumber,etEmergencyContact,etAddress,etAmount,etReceiptId;
     private TextView tvError;
-    private String paymentOption;
+    private String paymentOption,fatherFirstName,fatherMiddleName;
     private Button btnSave;
     private DatePickerDialog picker;
     private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -121,17 +121,16 @@ public class FragmentAddStudent extends Fragment {
     private Batch batch;
     private List<Batch> batchList=new ArrayList<>();
     private String batchId;
-    private String schoolId;
+    private String instituteId,academicYearId;
     private Gson gson;
     float amount;
     private String receiptId;
-    private String academicYearId;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SessionManager sessionManager = new SessionManager(getContext());
         loggedInUserId = sessionManager.getString("loggedInUserId");
-        schoolId=sessionManager.getString("schoolId");
+        instituteId=sessionManager.getString("instituteId");
         academicYearId= sessionManager.getString("academicYearId");
         pDialog= Utility.createSweetAlertDialog(getContext());
     }
@@ -176,13 +175,13 @@ public class FragmentAddStudent extends Fragment {
         etDob = view.findViewById(R.id.etDob);
         ivProfilePic=view.findViewById(R.id.ivProfilePic);
         ibChoosePhoto=view.findViewById(R.id.ibChoosePhoto);
-        etMotherMobileNumber = view.findViewById(R.id.etMotherMobileNumber);
+        //etMotherMobileNumber = view.findViewById(R.id.etMotherMobileNumber);
         etEmergencyContact = view.findViewById(R.id.etEmergencyContact);
         etAddress = view.findViewById(R.id.etAddress);
        // btnUpload=view.findViewById(R.id.btnUpload);
         etDob.setInputType(InputType.TYPE_NULL);
-        etFather=view.findViewById(R.id.etFatherName);
-        etMother=view.findViewById(R.id.etMotherName);
+        etFatherFirstName=view.findViewById(R.id.etFatherFirstName);
+        etFatherMiddleName=view.findViewById(R.id.etFatherMiddleName);
         etFatherMobileNumber=view.findViewById(R.id.etFatherMobileNumber);
         etEmailId=view.findViewById(R.id.etEmailId);
        // etRelation=view.findViewById(R.id.etRelation);
@@ -230,7 +229,7 @@ public class FragmentAddStudent extends Fragment {
             else{
                 radioBtnFemale.setChecked(true);
             }
-            etFather.setText(""+selectedEnquiry.getFather());
+            etFatherFirstName.setText(""+selectedEnquiry.getFather());
             //etMiddleName.setText(""+selectedEnquiry.getFather());
             etFatherMobileNumber.setText(""+selectedEnquiry.getMobileNumber());
             if(!TextUtils.isEmpty(selectedEnquiry.getEmailId())){
@@ -242,8 +241,8 @@ public class FragmentAddStudent extends Fragment {
             etFirstName.setText("");
             //etMiddleName.setText("");
             etLastName.setText("");
-            etFather.setText("");
-            etMother.setText("");
+            etFatherFirstName.setText("");
+            etFatherMiddleName.setText("");
             etFatherMobileNumber.setText("");
             etEmailId.setText("");
             /*if(selectedBatch!=null) {
@@ -419,15 +418,15 @@ public class FragmentAddStudent extends Fragment {
                         return;
                     }
                 }
-                father = etFather.getText().toString().trim();
-                if (TextUtils.isEmpty(father)) {
-                    etFather.setError("Enter father name");
-                    etFather.requestFocus();
+                fatherFirstName = etFatherFirstName.getText().toString().trim();
+                if (TextUtils.isEmpty(fatherFirstName)) {
+                    etFatherFirstName.setError("Enter father's first name");
+                    etFatherFirstName.requestFocus();
                     return;
                 }else{
-                    if(!Utility.isAlphabetic(father)){
-                        etFather.setError("Father's name must be alphabetic");
-                        etFather.requestFocus();
+                    if(!Utility.isAlphabetic(fatherFirstName)){
+                        etFatherFirstName.setError("Father's first name must be alphabetic");
+                        etFatherFirstName.requestFocus();
                         return;
                     }
                 }
@@ -443,15 +442,15 @@ public class FragmentAddStudent extends Fragment {
                         return;
                     }
                 }
-                mother = etMother.getText().toString().trim();
-                if (!TextUtils.isEmpty(mother)) {
-                    if(!Utility.isAlphabetic(mother)){
-                        etMother.setError("Mother's name must be alphabetic");
-                        etMother.requestFocus();
+                fatherMiddleName = etFatherMiddleName.getText().toString().trim();
+                if (!TextUtils.isEmpty(fatherMiddleName)) {
+                    if(!Utility.isAlphabetic(fatherMiddleName)){
+                        etFatherMiddleName.setError("Father's middle name must be alphabetic");
+                        etFatherMiddleName.requestFocus();
                         return;
                     }
                 }
-                motherMobileNumber = etMotherMobileNumber.getText().toString().trim();
+                /*motherMobileNumber = etMotherMobileNumber.getText().toString().trim();
                 if (!TextUtils.isEmpty(motherMobileNumber)) {
                     if(motherMobileNumber.length()>10 ||motherMobileNumber.length()<10) {
                         etMotherMobileNumber.setError("Enter 10 digit's mobile number");
@@ -463,7 +462,7 @@ public class FragmentAddStudent extends Fragment {
                         etMotherMobileNumber.requestFocus();
                         return;
                     }
-                }
+                }*/
                 emergencyContactNumber = etEmergencyContact.getText().toString().trim();
                 if (TextUtils.isEmpty(emergencyContactNumber) || emergencyContactNumber.length()>10 ||emergencyContactNumber.length()<10) {
                     etEmergencyContact.setError("Enter 10 digit's mobile number");
@@ -570,7 +569,9 @@ public class FragmentAddStudent extends Fragment {
                     student.setCreatorType("A");
 
                     parent = new Parent();
-                    parent.setFirstName(father);
+                    parent.setFirstName(fatherFirstName);
+                    parent.setMiddleName(fatherMiddleName);
+                    parent.setLastName(lastName);
                     parent.setMobileNumber(fatherMobileNumber);
                     parent.setAddress(address);
                     parent.setPassword("");
@@ -664,9 +665,8 @@ public class FragmentAddStudent extends Fragment {
             pDialog.show();
         }
         batchCollectionRef
-                .whereEqualTo("schoolId", schoolId)
-                //.orderBy("eligibleYears", Query.Direction.ASCENDING)
-                //.orderBy("eligibleMonths", Query.Direction.ASCENDING)
+                .whereEqualTo("instituteId", instituteId)
+                .orderBy("name", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

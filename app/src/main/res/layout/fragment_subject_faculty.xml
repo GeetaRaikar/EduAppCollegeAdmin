@@ -8,36 +8,47 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    tools:context=".FragmentStaff">
+    tools:context=".FragmentSubjectFaculty">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvStaffType"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:scrollbars="horizontal" />
+        android:layout_margin="5dp">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-        android:background="@color/colorPrimary" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_class_small"
+                android:drawablePadding="@dimen/drawablePaddingSize"
+                android:text="@string/selectBatch"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <Spinner
+                android:id="@+id/spBatch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:prompt="@string/selectBatch"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorGreyLight">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvStaff"
+            android:id="@+id/rvSubjectFaculty"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
             android:scrollbars="vertical" />
 
         <LinearLayout
@@ -69,15 +80,14 @@
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddStaff"
+            android:id="@+id/addSubjectFaculty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|left"
             android:layout_margin="@dimen/fab_margin"
-            android:src="@drawable/ic_menu_faculty"
+            app:backgroundTint="@color/colorPrimary"
             android:tint="@color/colorWhite"
-            app:backgroundTint="@color/colorPrimary" />
+            app:srcCompat="@drawable/ic_menu_classroom" />
     </FrameLayout>
-
 
 </LinearLayout>
