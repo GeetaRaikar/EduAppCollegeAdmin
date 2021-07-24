@@ -22,6 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.padmajeet.techforedu.wowcollege.admin.model.Batch;
@@ -68,7 +69,7 @@ public class FragmentTimeTable extends Fragment {
     private Gson gson;
     private LinearLayout llNoList;
     private Staff loggedInUser;
-    private String schoolId,academicYearId;
+    private String instituteId,academicYearId;
     private Fragment currentFragment = this;
     private List<TimeTable> timeTableDayWiseList = new ArrayList<>();
     private String selectedBatchTimeTable;
@@ -92,7 +93,7 @@ public class FragmentTimeTable extends Fragment {
         String userJson = sessionManager.getString("loggedInUser");
         gson = Utility.getGson();
         loggedInUser = gson.fromJson(userJson, Staff.class);
-        schoolId = sessionManager.getString("schoolId");
+        instituteId = sessionManager.getString("instituteId");
         academicYearId = sessionManager.getString("academicYearId");
         pDialog=Utility.createSweetAlertDialog(getContext());
     }
@@ -304,6 +305,7 @@ public class FragmentTimeTable extends Fragment {
         }
         subjectCollectionRef
                 .whereEqualTo("batchId", selectedBatch.getId())
+                .orderBy("createdDate", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -352,7 +354,7 @@ public class FragmentTimeTable extends Fragment {
             pDialog.show();
         }
         staffCollectionRef
-                .whereEqualTo("schoolId",schoolId)
+                .whereEqualTo("instituteId",instituteId)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -395,11 +397,8 @@ public class FragmentTimeTable extends Fragment {
                         } else {
 
                         }
-
-
                     }
                 })
-
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -415,7 +414,8 @@ public class FragmentTimeTable extends Fragment {
             pDialog.show();
         }
         batchCollectionRef
-                .whereEqualTo("schoolId",schoolId)
+                .whereEqualTo("instituteId",instituteId)
+                .orderBy("name", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -423,7 +423,6 @@ public class FragmentTimeTable extends Fragment {
                         if(pDialog!=null){
                             pDialog.dismiss();
                         }
-
                         for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
                             batch = document.toObject(Batch.class);
                             batch.setId(document.getId());
@@ -437,7 +436,6 @@ public class FragmentTimeTable extends Fragment {
                             ArrayAdapter<String> batchAdaptor = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, batchNameList);
                             batchAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             spBatch.setAdapter(batchAdaptor);
-
                             spBatch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -455,18 +453,13 @@ public class FragmentTimeTable extends Fragment {
                                 }
                                 @Override
                                 public void onNothingSelected(AdapterView<?> parent) {
-
                                 }
                             });
-
                         } else {
                             spBatch.setEnabled(false);
                         }
-
-
                     }
                 })
-
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -484,6 +477,7 @@ public class FragmentTimeTable extends Fragment {
         timeTableCollectionRef
                 .whereEqualTo("batchId",selectedBatch.getId())
                 .whereEqualTo("academicYearId",academicYearId)
+                .orderBy("createdDate", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -491,7 +485,6 @@ public class FragmentTimeTable extends Fragment {
                         if(pDialog!=null){
                             pDialog.dismiss();
                         }
-
                         for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
                             timeTable = document.toObject(TimeTable.class);
                             timeTable.setId(document.getId());
@@ -507,11 +500,8 @@ public class FragmentTimeTable extends Fragment {
                             rvTimetable.setVisibility(View.GONE);
                             llNoList.setVisibility(View.VISIBLE);
                         }
-
-
                     }
                 })
-
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {

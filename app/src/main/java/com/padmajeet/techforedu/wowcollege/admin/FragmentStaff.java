@@ -56,11 +56,9 @@ public class FragmentStaff extends Fragment {
     private RecyclerView rvStaffType, rvStaff;
     private LinearLayout llNoList;
     private FloatingActionButton fabAddStaff;
-
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference staffTypeCollectionRef = db.collection("StaffType");
     private CollectionReference staffCollectionRef = db.collection("Staff");
-
     private List<StaffType> staffTypeList = new ArrayList<>();
     private List<Staff> staffList = new ArrayList<>();
     private String selectedStaffTypeId;

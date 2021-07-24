@@ -62,7 +62,7 @@ public class FragmentEvent extends Fragment {
     private CollectionReference eventTypeCollectionRef = db.collection("EventType");
     private EventType eventType;
     private List<EventType> eventTypeList = new ArrayList<>();
-    private String loggedInUserId, academicYearId, schoolId;
+    private String loggedInUserId, academicYearId, instituteId;
     private Event event;
     private RecyclerView rvEvent;
     private RecyclerView.Adapter eventAdapter;
@@ -88,7 +88,7 @@ public class FragmentEvent extends Fragment {
         loggedInUser = gson.fromJson(userJson, Staff.class);
         loggedInUserId = sessionManager.getString("loggedInUserId");
         academicYearId = sessionManager.getString("academicYearId");
-        schoolId = sessionManager.getString("schoolId");
+        instituteId = sessionManager.getString("instituteId");
         pDialog = Utility.createSweetAlertDialog(getContext());
     }
 
@@ -231,7 +231,7 @@ public class FragmentEvent extends Fragment {
             pDialog.show();
         }
         eventCollectionRef
-                .whereEqualTo("schoolId", schoolId)
+                .whereEqualTo("instituteId", instituteId)
                 .whereEqualTo("schoolScope", true)
                 .whereEqualTo("recipientType", "P")
                 .whereEqualTo("category", category_view)
@@ -283,7 +283,7 @@ public class FragmentEvent extends Fragment {
             pDialog.show();
         }
         eventCollectionRef
-                .whereEqualTo("schoolId", schoolId)
+                .whereEqualTo("instituteId", instituteId)
                 .whereEqualTo("recipientType", "F")
                 .whereEqualTo("category", category_view)
                 .orderBy("fromDate", Query.Direction.DESCENDING)
@@ -334,7 +334,7 @@ public class FragmentEvent extends Fragment {
             pDialog.show();
         }
         eventCollectionRef
-                .whereEqualTo("schoolId", schoolId)
+                .whereEqualTo("instituteId", instituteId)
                 .whereEqualTo("recipientType", "P")
                 .whereEqualTo("category", category_view)
                 .whereIn("batchId", Arrays.asList("", selectedBatch.getId()))
@@ -386,9 +386,8 @@ public class FragmentEvent extends Fragment {
             pDialog.show();
         }
         batchCollectionRef
-                .whereEqualTo("schoolId", schoolId)
-                .orderBy("eligibleYears", Query.Direction.ASCENDING)
-                .orderBy("eligibleMonths", Query.Direction.ASCENDING)
+                .whereEqualTo("instituteId", instituteId)
+                .orderBy("name", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -430,8 +429,8 @@ public class FragmentEvent extends Fragment {
 
     private void getEventTypes() {
         eventTypeCollectionRef
-                .whereEqualTo("schoolId", schoolId)
-                .orderBy("createdDate", Query.Direction.ASCENDING)
+                .whereEqualTo("instituteId", instituteId)
+                .orderBy("name", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

@@ -242,6 +242,7 @@
     <string name="fatherMiddleName">Father\'s Middle Name</string>
     <string name="mobileNumberReq">Mobile Number *</string>
     <string name="addSubjectFaculty">Add Subject Faculty</string>
+    <string name="selectPeriod">SELECT PERIOD</string>
     <string-array name="payment_option_array">
         <item>Cash</item>
         <item>Cheque</item>

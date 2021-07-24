@@ -62,17 +62,17 @@ public class FragmentStudent extends Fragment {
     private String loggedInUserId;
     private List<Batch> batchList = new ArrayList<Batch>();
     private Batch batch;
-    Batch selectedBatch;
+    private Batch selectedBatch;
     //private List<Section> sectionList = new ArrayList<Section>();
     //private Section section;
     //Section selectedSection;
-    TextView tvCount;
-    Bundle bundle = new Bundle();
+    private TextView tvCount;
+    private Bundle bundle = new Bundle();
     private LinearLayout llNoList;
     private List<Student> studentList = new ArrayList<Student>();
     private Student student;
-    private  String academicYearId;
-    String selectedBatchStudent;
+    private String academicYearId;
+    private String selectedBatchStudent;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference studentCollectionRef = db.collection("Student");
     private CollectionReference batchCollectionRef = db.collection("Batch");
@@ -81,16 +81,15 @@ public class FragmentStudent extends Fragment {
     private RecyclerView rvStudent;
     private StudentAdapter studentAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    Gson gson;
-    SearchView search_view;
+    private Gson gson;
+    private SearchView search_view;
     private LinearLayout llTotalStudents;
     private Parent parent;
     private  List<StudentParent> studentParentList=new ArrayList<StudentParent>();
     private StudentParent studentParent;
-    Staff loggedInUser;
-    String instituteId;
+    private Staff loggedInUser;
+    private String instituteId;
     private SweetAlertDialog pDialog;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -174,7 +173,6 @@ public class FragmentStudent extends Fragment {
                             pDialog.dismiss();
                         }
                         if (task.isSuccessful()) {
-
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 // Log.d(TAG, document.getId()document.getId() + " => " + document.getData());
                                 batch = document.toObject(Batch.class);
