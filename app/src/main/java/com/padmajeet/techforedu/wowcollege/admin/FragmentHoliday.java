@@ -72,12 +72,12 @@ public class FragmentHoliday extends Fragment {
 
     private LinearLayout llNoList;
     private List<Holiday> holidayList = new ArrayList<>();
-    Bundle bundle = new Bundle();
-    String academicYearId;
+    private Bundle bundle = new Bundle();
+    private String academicYearId;
     private Fragment currentFragment = this;
-    String date;
+    private String date;
     private boolean isFromDate, isToDate;
-    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference holidayCollectionRef = db.collection("Holiday");
     private Batch batch;
@@ -86,24 +86,24 @@ public class FragmentHoliday extends Fragment {
     private RecyclerView.Adapter holidayAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private String loggedInUserId;
-    FloatingActionButton fab;
-    Staff loggedInUser;
-    String instituteId;
-    Gson gson;
+    private FloatingActionButton fab;
+    private Staff loggedInUser;
+    private String instituteId;
+    private Gson gson;
     private EditText etEvent;
     private EditText etDescription, etFromDate, etToDate;
     private ImageView ivToDate, ivFromDate;
     private Button btnSave;
     private TextView tvError;
-    DatePickerDialog picker,fromDatePicker,toDatePicker,editFromDatePicker,editToDatePicker;
-    int[] circles = {R.drawable.circle_blue_filled, R.drawable.circle_brown_filled, R.drawable.circle_green_filled, R.drawable.circle_pink_filled, R.drawable.circle_orange_filled};
+    private DatePickerDialog picker, fromDatePicker, toDatePicker, editFromDatePicker, editToDatePicker;
+    private int[] circles = {R.drawable.circle_blue_filled, R.drawable.circle_brown_filled, R.drawable.circle_green_filled, R.drawable.circle_pink_filled, R.drawable.circle_orange_filled};
     private ListenerRegistration holidayListener;
-    int day,month,year;
+    private int day, month, year;
     private final int REQ_CODE_SPEECH_INPUT = 100;
-    StringBuffer description = new StringBuffer();
-    StringBuffer editDescription = new StringBuffer();
-    EditText etEditDescription;
-    ImageButton ibMic;
+    private StringBuffer description = new StringBuffer();
+    private StringBuffer editDescription = new StringBuffer();
+    private EditText etEditDescription;
+    private ImageButton ibMic;
 
 
     public FragmentHoliday() {
@@ -142,7 +142,6 @@ public class FragmentHoliday extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 bottomSheetDialog.show();
             }
         });
@@ -151,7 +150,6 @@ public class FragmentHoliday extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         final SweetAlertDialog pDialog;
         pDialog = Utility.createSweetAlertDialog(getContext());
         pDialog.show();
@@ -218,7 +216,7 @@ public class FragmentHoliday extends Fragment {
             btnSave = view.findViewById(R.id.btnSave);
             tvError = view.findViewById(R.id.tvError);
             etDescription = view.findViewById(R.id.etDescription);
-            ibMic= view.findViewById(R.id.ibMic);
+            ibMic = view.findViewById(R.id.ibMic);
             ibMic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -433,7 +431,7 @@ public class FragmentHoliday extends Fragment {
                 public void onClick(View view) {
                     LayoutInflater inflater = getLayoutInflater();
                     View dialogLayout = inflater.inflate(R.layout.dialog_edit_holiday, null);
-                    TextView tvError= dialogLayout.findViewById(R.id.tvError);
+                    TextView tvError = dialogLayout.findViewById(R.id.tvError);
                     EditText etEditEvent = dialogLayout.findViewById(R.id.etEditEvent);
                     etEditEvent.setText("" + holiday.getEvent());
                     ImageButton ibEditMic = dialogLayout.findViewById(R.id.ibEditMic);
@@ -485,13 +483,13 @@ public class FragmentHoliday extends Fragment {
                     });
                     EditText etEditToDate = dialogLayout.findViewById(R.id.etEditToDate);
                     ImageView ivEditToDate = dialogLayout.findViewById(R.id.ivEditToDate);
-                    if(holiday.getToDate()!=null) {
+                    if (holiday.getToDate() != null) {
                         cldr.setTime(holiday.getToDate());
                         day = cldr.get(java.util.Calendar.DAY_OF_MONTH);
                         month = cldr.get(java.util.Calendar.MONTH);
                         year = cldr.get(java.util.Calendar.YEAR);
                         etEditToDate.setText(String.format("%02d", day) + "/" + (String.format("%02d", (month + 1))) + "/" + year);
-                    }else{
+                    } else {
                         cldr.setTime(new Date());
                         day = cldr.get(java.util.Calendar.DAY_OF_MONTH);
                         month = cldr.get(java.util.Calendar.MONTH);
@@ -543,22 +541,22 @@ public class FragmentHoliday extends Fragment {
                                         etEditEvent.setError("Enter the event");
                                         etEditEvent.requestFocus();
                                         return;
-                                    }else{
-                                        if(Utility.isNumeric(event)){
+                                    } else {
+                                        if (Utility.isNumeric(event)) {
                                             etEditEvent.setError("Invalid event");
                                             etEditEvent.requestFocus();
                                             return;
-                                        }else{
+                                        } else {
                                             holiday.setEvent(event);
                                         }
                                     }
                                     String description = etDescription.getText().toString().trim();
                                     if (!TextUtils.isEmpty(description)) {
-                                        if(Utility.isNumeric(description)){
+                                        if (Utility.isNumeric(description)) {
                                             etDescription.setError("Invalid description");
                                             etDescription.requestFocus();
                                             return;
-                                        }else{
+                                        } else {
                                             holiday.setDescription(description);
                                         }
                                     }
@@ -578,7 +576,7 @@ public class FragmentHoliday extends Fragment {
                                             tvError.setVisibility(View.VISIBLE);
                                             tvError.setText("From date is already over");
                                             return;
-                                        }else {
+                                        } else {
                                             holiday.setToDate(fromDt);
                                         }
                                     } catch (ParseException e) {
@@ -603,7 +601,7 @@ public class FragmentHoliday extends Fragment {
                                             tvError.setText("To Date must be less than From Date");
                                             return;
                                         }
-                                    }else{
+                                    } else {
                                         holiday.setToDate(toDt);
                                     }
                                     holiday.setModifiedDate(new Date());
@@ -620,7 +618,7 @@ public class FragmentHoliday extends Fragment {
                                                     pDialog.dismiss();
                                                 }
                                                 sDialog.dismissWithAnimation();
-                                                SweetAlertDialog sweetAlertDialog=new SweetAlertDialog(getContext(),SweetAlertDialog.SUCCESS_TYPE)
+                                                SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE)
                                                         .setTitleText("Holiday is updated")
                                                         .setConfirmText("Ok")
                                                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -696,9 +694,10 @@ public class FragmentHoliday extends Fragment {
             return holidayList.size();
         }
     }
+
     /**
      * Showing google speech input dialog
-     * */
+     */
     private void promptSpeechInput() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,

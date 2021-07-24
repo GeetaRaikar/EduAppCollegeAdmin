@@ -8,6 +8,7 @@ public class SubjectFaculty {
 	@Exclude
 	private String id;
 	private String academicYearId;
+	private String batchId;
 	private String subjectId;
 	private String facultyId;
 	private String status = "A";
@@ -105,5 +106,13 @@ public class SubjectFaculty {
 
 	public void setAcademicYearId(String academicYearId) {
 		this.academicYearId = academicYearId;
+	}
+
+	public String getBatchId() {
+		return batchId;
+	}
+
+	public void setBatchId(String batchId) {
+		this.batchId = batchId;
 	}
 }

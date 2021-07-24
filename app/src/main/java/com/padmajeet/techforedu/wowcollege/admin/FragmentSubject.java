@@ -1,6 +1,5 @@
 package com.padmajeet.techforedu.wowcollege.admin;
 
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -23,6 +22,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -42,7 +42,6 @@ import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,109 +56,42 @@ public class FragmentSubject extends Fragment {
     private LinearLayout llNoList;
     private ArrayList<Batch> batchList = new ArrayList<>();
     private ArrayList<Subject> subjectList = new ArrayList<>();
-    private String academicYearId,loggedInUserId,instituteId;
-    private Batch batch,selectedBatch;
+    private String loggedInUserId, instituteId;
+    private Batch batch, selectedBatch;
     private Subject subject;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference subjectCollectionRef = db.collection("Subject");
     private CollectionReference batchCollectionRef = db.collection("Batch");
     private CollectionReference studentCollectionRef = db.collection("Student");
     private CollectionReference homeworkCollectionRef = db.collection("HomeWork");
-    private ListenerRegistration subjectListener;
     private List<String> alreadySubjectList = new ArrayList<>();
     private EditText etSubjectName;
     private RecyclerView rvSubject;
     private RecyclerView.Adapter subjectAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Spinner spBatch;
-    private Staff loggedInUser;
     private Gson gson;
-    int subSpinnerPos;
     int mainSpinnerPos;
     private SweetAlertDialog pDialog;
     private ImageButton btnSubmit;
     private String name;
 
+
+    /*
+     *   loading for fetching data from backend    *
+     *   Session for loggedInUser                  *
+     *   Session for Academic Year                 *
+     *   Session for Institute                     *
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SessionManager sessionManager = new SessionManager(getContext());
         gson = Utility.getGson();
-        String userJson = sessionManager.getString("loggedInUser");
-        loggedInUser = gson.fromJson(userJson, Staff.class);
         loggedInUserId = sessionManager.getString("loggedInUserId");
-        academicYearId = sessionManager.getString("academicYearId");
-        instituteId =sessionManager.getString("instituteId");
+        instituteId = sessionManager.getString("instituteId");
         pDialog = Utility.createSweetAlertDialog(getContext());
     }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (subjectListener != null) {
-            subjectListener.remove();
-        }
-    }
-    public void getBatches() {
-        if (pDialog == null && !pDialog.isShowing()) {
-            pDialog.show();
-        }
-        batchCollectionRef
-                .whereEqualTo("instituteId", instituteId)
-                .orderBy("name", Query.Direction.ASCENDING)
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-                        if (batchList.size() != 0) {
-                            batchList.clear();
-                        }
-                        for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                            // Log.d(TAG, document.getId()document.getId() + " => " + document.getData());
-                            batch = document.toObject(Batch.class);
-                            batch.setId(document.getId());
-                            batchList.add(batch);
-                        }
-                        if (batchList.size() != 0) {
-                            llNoList.setVisibility(View.GONE);
-                            rvSubject.setVisibility(View.VISIBLE);
-                            spBatch.setEnabled(true);
-                            List<String> batchNameList = new ArrayList<>();
-                            for (Batch batch : batchList) {
-                                batchNameList.add(batch.getName());
-                            }
-                            ArrayAdapter<String> batchAdaptor = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, batchNameList);
-                            batchAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            spBatch.setAdapter(batchAdaptor);
-
-                            spBatch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                                @Override
-                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                                    selectedBatch = batchList.get(position);
-                                    mainSpinnerPos = position;
-                                    getSubject();
-                                }
-
-                                @Override
-                                public void onNothingSelected(AdapterView<?> parent) {
-
-                                }
-                            });
-                        } else {
-                            llNoList.setVisibility(View.VISIBLE);
-                            rvSubject.setVisibility(View.GONE);
-                            spBatch.setEnabled(false);
-                            if (pDialog != null && pDialog.isShowing()) {
-                                pDialog.dismiss();
-                            }
-                        }
-                    }
-                });
-
-    }
-
 
     public FragmentSubject() {
         // Required empty public constructor
@@ -181,6 +113,7 @@ public class FragmentSubject extends Fragment {
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(getContext());
         rvSubject.setLayoutManager(layoutManager);
+
         getBatches();
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -223,35 +156,101 @@ public class FragmentSubject extends Fragment {
         return view;
     }
 
-    private void getSubject() {
+    /*
+     *   starting getBatches()               *
+     *   fetching Batch data from backend    *
+     *   ArrayAdapter attaching to spBatch   *
+     */
+    public void getBatches() {
         if (pDialog == null && !pDialog.isShowing()) {
             pDialog.show();
         }
-        subjectListener = subjectCollectionRef
-                .whereEqualTo("batchId", selectedBatch.getId())
-                .orderBy("createdDate", Query.Direction.ASCENDING)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+        batchCollectionRef
+                .whereEqualTo("instituteId", instituteId)
+                .orderBy("name", Query.Direction.ASCENDING)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                        if (e != null) {
-                            return;
-                        }
-                        if (pDialog != null) {
-                            pDialog.dismiss();
-                        }
-                        if (subjectList.size() != 0) {
-                            subjectList.clear();
-                        }
-                        if (alreadySubjectList.size() != 0) {
-                            alreadySubjectList.clear();
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        if (batchList.size() != 0) {
+                            batchList.clear();
                         }
                         for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                             // Log.d(TAG, document.getId()document.getId() + " => " + document.getData());
-                            subject = document.toObject(Subject.class);
-                            subject.setId(document.getId());
+                            batch = document.toObject(Batch.class);
+                            batch.setId(document.getId());
+                            batchList.add(batch);
+                        }
+                        if (batchList.size() != 0) {
+                            llNoList.setVisibility(View.GONE);
+                            rvSubject.setVisibility(View.VISIBLE);
+                            spBatch.setEnabled(true);
+                            List<String> batchNameList = new ArrayList<>();
+                            for (Batch batch : batchList) {
+                                batchNameList.add(batch.getName());
+                            }
+                            ArrayAdapter<String> batchAdaptor = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, batchNameList);
+                            batchAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spBatch.setAdapter(batchAdaptor);
+
+                            spBatch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                    selectedBatch = batchList.get(position);
+                                    mainSpinnerPos = position;
+                                    getSubject();
+                                }
+
+                                @Override
+                                public void onNothingSelected(AdapterView<?> parent) {
+
+                                }
+                            });
+                        } else {
+                            llNoList.setVisibility(View.VISIBLE);
+                            rvSubject.setVisibility(View.GONE);
+                            spBatch.setEnabled(false);
+                            if (pDialog != null && pDialog.isShowing()) {
+                                pDialog.dismiss();
+                            }
+                        }
+                    }
+                });
+
+    }
+    /* ending getBatches() */
+
+    /*
+     *   starting getSubject()               *
+     *   fetching Subject data from backend    *
+     */
+    private void getSubject() {
+        if (pDialog != null) {
+            pDialog.show();
+        }
+        System.out.println("selectedBatch- " + selectedBatch.getId());
+        if (subjectList.size() != 0) {
+            subjectList.clear();
+        }
+        if (alreadySubjectList.size() != 0) {
+            alreadySubjectList.clear();
+        }
+        subjectCollectionRef
+                .whereEqualTo("batchId", selectedBatch.getId())
+                .orderBy("createdDate", Query.Direction.ASCENDING)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
+                            // Log.d(TAG, document.getId()document.getId() + " => " + document.getData());
+                            subject = documentSnapshot.toObject(Subject.class);
+                            subject.setId(documentSnapshot.getId());
                             alreadySubjectList.add(subject.getName());
                             subjectList.add(subject);
                         }
+                        System.out.println("subjectList- " + subjectList.size());
                         if (subjectList.size() != 0) {
                             subjectAdapter = new SubjectAdapter(subjectList);
                             rvSubject.setAdapter(subjectAdapter);
@@ -261,10 +260,25 @@ public class FragmentSubject extends Fragment {
                             rvSubject.setVisibility(View.GONE);
                             llNoList.setVisibility(View.VISIBLE);
                         }
+                        if (pDialog != null) {
+                            pDialog.dismiss();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        if (pDialog != null) {
+                            pDialog.dismiss();
+                        }
                     }
                 });
     }
+    /* ending getSubject() */
 
+    /*
+     *   Adapter attaching to row_subject   *
+     */
     class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.MyViewHolder> {
         private List<Subject> subjectList;
 
@@ -359,7 +373,7 @@ public class FragmentSubject extends Fragment {
                                                             @Override
                                                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                                                 sweetAlertDialog.dismissWithAnimation();
-                                                                //getSubject();
+                                                                getSubject();
                                                             }
                                                         });
                                                 dialog.setCancelable(false);
@@ -395,7 +409,11 @@ public class FragmentSubject extends Fragment {
             return subjectList.size();
         }
     }
+    /*      ending Adapter    */
 
+    /*
+     *   starting deleteSubject()            *
+     */
     private void deleteSubject(Subject subject) {
         if (pDialog == null && !pDialog.isShowing()) {
             pDialog.show();
@@ -436,7 +454,7 @@ public class FragmentSubject extends Fragment {
                                                                         @Override
                                                                         public void onClick(SweetAlertDialog sweetAlertDialog) {
                                                                             sweetAlertDialog.dismissWithAnimation();
-                                                                            //getSubject();
+                                                                            getSubject();
                                                                         }
                                                                     });
                                                             dialog.setCancelable(false);
@@ -479,7 +497,11 @@ public class FragmentSubject extends Fragment {
                     }
                 });
     }
+    /*      ending deleteSubject()     */
 
+    /*
+        *   starting deleteSubject()            *
+     */
     private void addSubject() {
         subjectCollectionRef
                 .add(subject)
@@ -514,7 +536,7 @@ public class FragmentSubject extends Fragment {
         // [END add_document]
         etSubjectName.setText("");
     }
-
+    /*      ending addSubject()     */
 
 }
 

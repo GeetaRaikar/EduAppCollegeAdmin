@@ -73,7 +73,7 @@ public class FragmentSubjectFaculty extends Fragment {
     private CollectionReference subjectCollectionRef = db.collection("Subject");
     private DocumentReference staffDocRef;
     private SubjectFaculty subjectFaculty;
-    private String loggedInUserId, instituteId;
+    private String loggedInUserId, instituteId,academicYearId;
     private Spinner spSubject;
     private Subject subject;
     private String subjectId;
@@ -101,6 +101,7 @@ public class FragmentSubjectFaculty extends Fragment {
         String userJson = sessionManager.getString("loggedInUser");
         loggedInUser = gson.fromJson(userJson, Staff.class);
         loggedInUserId = sessionManager.getString("loggedInUserId");
+        academicYearId = sessionManager.getString("academicYearId");
         instituteId = sessionManager.getString("instituteId");
         pDialog = Utility.createSweetAlertDialog(getContext());
     }
@@ -115,7 +116,7 @@ public class FragmentSubjectFaculty extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_subject_faculty, container, false);
-        ((ActivityHome) getActivity()).getSupportActionBar().setTitle(getString(R.string.batchFaculty));
+        ((ActivityHome) getActivity()).getSupportActionBar().setTitle(getString(R.string.subjectFaculty));
 
         rvSubjectFaculty = (RecyclerView) view.findViewById(R.id.rvSubjectFaculty);
         spBatch = view.findViewById(R.id.spBatch);
@@ -226,6 +227,8 @@ public class FragmentSubjectFaculty extends Fragment {
                     subjectFaculty = new SubjectFaculty();
                     subjectFaculty.setFacultyId(selectedStaff.getId());
                     subjectFaculty.setSubjectId(subjectId);
+                    subjectFaculty.setBatchId(selectedBatch.getId());
+                    subjectFaculty.setAcademicYearId(academicYearId);
                     subjectFaculty.setCreatorId(loggedInUserId);
                     subjectFaculty.setModifierId(loggedInUserId);
                     subjectFaculty.setStatus("A");
@@ -375,6 +378,7 @@ public class FragmentSubjectFaculty extends Fragment {
             pDialog.show();
         }
         subjectFacultyCollectionRef
+                .whereEqualTo("academicYearId",academicYearId)
                 .whereEqualTo("batchId", selectedBatch.getId())
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

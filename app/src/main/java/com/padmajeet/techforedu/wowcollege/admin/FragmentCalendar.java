@@ -74,8 +74,6 @@ public class FragmentCalendar extends Fragment {
     private LinearLayout llNoList;
     private List<Calendar> calendarList = new ArrayList<>();
     private Calendar calendar;
-    private String date;
-    private boolean isFromDate, isToDate;
     private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private RecyclerView rvCalendar;
     private RecyclerView.Adapter calendarAdapter;
@@ -84,9 +82,9 @@ public class FragmentCalendar extends Fragment {
     private Staff loggedInUser;
     private String instituteId, loggedInUserId, academicYearId;
     private Gson gson;
-    int[] circles = {R.drawable.circle_blue_filled, R.drawable.circle_brown_filled, R.drawable.circle_green_filled, R.drawable.circle_pink_filled, R.drawable.circle_orange_filled};
-    SweetAlertDialog pDialog;
-    Date toDayDate = new Date();
+    private int[] circles = {R.drawable.circle_blue_filled, R.drawable.circle_brown_filled, R.drawable.circle_green_filled, R.drawable.circle_pink_filled, R.drawable.circle_orange_filled};
+    private SweetAlertDialog pDialog;
+    private Date toDayDate = new Date();
     private final int REQ_CODE_SPEECH_INPUT = 100;
     private StringBuffer comment = new StringBuffer();
     private int day, month, year;
@@ -138,6 +136,11 @@ public class FragmentCalendar extends Fragment {
         return view;
     }
 
+    /*
+     *   starting getBatches()          *
+     *   fetching batch from backend    *
+     *   ArrayAdapter for spBatch       *
+     */
     private void getBatches() {
         if (batchList.size() != 0) {
             batchList.clear();
@@ -147,8 +150,7 @@ public class FragmentCalendar extends Fragment {
         }
         batchCollectionRef
                 .whereEqualTo("instituteId", instituteId)
-                //.orderBy("eligibleYears", Query.Direction.ASCENDING)
-                //.orderBy("eligibleMonths", Query.Direction.ASCENDING)
+                .orderBy("name", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -200,8 +202,12 @@ public class FragmentCalendar extends Fragment {
                 });
         // [END get_all_users]
     }
+    /*      ending getBatch()       */
 
-
+    /*
+      *      starting getCalendarOfBatch()                           *
+      *      fetching calendar for particular batch from backend     *
+     */
     private void getCalendarOfBatch() {
         if (calendarList.size() != 0) {
             calendarList.clear();
@@ -249,8 +255,10 @@ public class FragmentCalendar extends Fragment {
         // [END get_all_users]
 
     }
+    /*      ending getCalendarOfBatch()     */
 
-
+    /*      Adapter for calendar data
+     */
     class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.MyViewHolder> {
         private List<Calendar> calendarList;
 
@@ -481,7 +489,7 @@ public class FragmentCalendar extends Fragment {
                                                     pDialog.dismiss();
                                                 }
                                                 sDialog.dismissWithAnimation();
-                                                SweetAlertDialog sweetAlertDialog=new SweetAlertDialog(getContext(),SweetAlertDialog.SUCCESS_TYPE)
+                                                SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE)
                                                         .setTitleText("Calendar is updated")
                                                         .setConfirmText("Ok")
                                                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -568,6 +576,7 @@ public class FragmentCalendar extends Fragment {
             return calendarList.size();
         }
     }
+    /*      ending Adapter for calendar data        */
 
     /**
      * Showing google speech input dialog

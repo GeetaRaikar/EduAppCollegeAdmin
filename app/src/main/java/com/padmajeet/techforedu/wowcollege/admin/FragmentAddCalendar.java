@@ -35,6 +35,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.padmajeet.techforedu.wowcollege.admin.model.Batch;
 import com.padmajeet.techforedu.wowcollege.admin.model.Calendar;
@@ -401,9 +402,8 @@ public class FragmentAddCalendar extends Fragment {
             pDialog.show();
         }
         batchCollectionRef
-                .whereEqualTo(instituteId, instituteId)
-                //.orderBy("eligibleYears", Query.Direction.ASCENDING)
-                //.orderBy("eligibleMonths", Query.Direction.ASCENDING)
+                .whereEqualTo("instituteId", instituteId)
+                .orderBy("name", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
