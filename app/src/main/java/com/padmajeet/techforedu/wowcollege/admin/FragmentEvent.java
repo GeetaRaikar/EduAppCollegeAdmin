@@ -449,7 +449,6 @@ public class FragmentEvent extends Fragment {
                     }
                 });
         // [END get_all_users]
-
     }
 
     class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {

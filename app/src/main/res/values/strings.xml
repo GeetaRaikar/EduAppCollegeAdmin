@@ -243,6 +243,12 @@
     <string name="mobileNumberReq">Mobile Number *</string>
     <string name="addSubjectFaculty">Add Subject Faculty</string>
     <string name="selectPeriod">SELECT PERIOD</string>
+    <string name="exam">Exam</string>
+    <string name="i_a_date">Date</string>
+    <string name="from_time">From Time</string>
+    <string name="to_time">To Time</string>
+    <string name="total_marks">Total Marks</string>
+    <string name="cutOfMarks">Cut Of Marks</string>
     <string-array name="payment_option_array">
         <item>Cash</item>
         <item>Cheque</item>
