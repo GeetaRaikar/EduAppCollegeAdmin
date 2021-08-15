@@ -385,8 +385,10 @@ public class FragmentBatch extends Fragment {
         public void onBindViewHolder(final MyViewHolder holder, int position) {
             final Batch batch = batchList.get(position);
             holder.BatchName.setText("" + batch.getName());
+            if(TextUtils.isEmpty(batch.getLongName()) || batch.getLongName()==null){
+                holder.tvLongName.setVisibility(View.GONE);
+            }
             holder.tvLongName.setText("" + batch.getLongName());
-
             /*
             holder.llImage.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
@@ -442,7 +444,9 @@ public class FragmentBatch extends Fragment {
                     final EditText etName = dialogLayout.findViewById(R.id.etBatchName);
                     etName.setText("" + batch.getName());
                     final EditText etLongName = dialogLayout.findViewById(R.id.etBatchLongName);
-                    etLongName.setText("" + batch.getLongName());
+                    if(!TextUtils.isEmpty(batch.getLongName()) || batch.getLongName()!=null){
+                        etLongName.setText("" + batch.getLongName());
+                    }
                     SweetAlertDialog dialog = new SweetAlertDialog(getContext(), SweetAlertDialog.NORMAL_TYPE)
                             .setTitleText("Edit Batch")
                             .setConfirmText("Update")
@@ -487,11 +491,7 @@ public class FragmentBatch extends Fragment {
                                         }
                                     }
                                     String batchLongName = etLongName.getText().toString().trim();
-                                    if (TextUtils.isEmpty(batchLongName)) {
-                                        etLongName.setError("Enter long name");
-                                        etLongName.requestFocus();
-                                        return;
-                                    }else{
+                                    if (!TextUtils.isEmpty(batchLongName)) {
                                         if(Utility.isNumericWithSpace(batchLongName)){
                                             etLongName.setError("Invalid long name");
                                             etLongName.requestFocus();

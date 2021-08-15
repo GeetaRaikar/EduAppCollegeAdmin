@@ -22,7 +22,8 @@
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_centerInParent="true"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivClassPic"
@@ -31,7 +32,7 @@
                     android:layout_gravity="center"
                     android:contentDescription="@string/nav_header_desc"
                     android:padding="3dp"
-                    android:src="@drawable/ic_menu_batch" />
+                    android:src="@drawable/ic_menu_batch"/>
             </LinearLayout>
 
             <TextView

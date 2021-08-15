@@ -39,7 +39,8 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class FragmentProfile extends Fragment {
     private View view;
     private Staff loggedInUser;
-    private EditText etMobileNumber,etFirstName,etLastName,etEmail,etAddress;
+    private TextView etMobileNumber;
+    private EditText etFirstName,etLastName,etEmail,etAddress;
     private ImageView ivProfilePic;
     private Button btUpdateProfile;
     boolean isEmailEdited, isFirstNameEdited, isLastNameEdited, isAddressEdited;
@@ -91,7 +92,7 @@ public class FragmentProfile extends Fragment {
                     .into(ivProfilePic);
         }
 
-        etMobileNumber = (EditText) view.findViewById(R.id.etMobileNumber);
+        etMobileNumber = (TextView) view.findViewById(R.id.etMobileNumber);
         etMobileNumber.setText(loggedInUser.getMobileNumber());
 
         etEmail = (EditText) view.findViewById(R.id.etEmail);

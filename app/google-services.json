@@ -8,9 +8,46 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:538760622600:android:c7fccd751222e0e14f57bd",
+        "mobilesdk_app_id": "1:538760622600:android:3a103a79aa7f57664f57bd",
         "android_client_info": {
-          "package_name": "com.padmajeet.eduapp.wowcollege.admin"
+          "package_name": "com.padmajeet.techforedu.wowcollege.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538760622600-4qfncq7hc0m4paopffr66dsob1vl4p80.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.padmajeet.techforedu.wowcollege.admin",
+            "certificate_hash": "6d08c6a79023064fa863fcc7b2b41ad4ec9c911b"
+          }
+        },
+        {
+          "client_id": "538760622600-9prpogqds13ji9q1cfa9uk40afkblv2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW13kI1-Ae0ySgxSlMuqIw7jW9F5afVes"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538760622600-9prpogqds13ji9q1cfa9uk40afkblv2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538760622600:android:27c0461fe639e87b4f57bd",
+        "android_client_info": {
+          "package_name": "com.padmajeet.techforedu.wowcollege.faculty"
         }
       },
       "oauth_client": [

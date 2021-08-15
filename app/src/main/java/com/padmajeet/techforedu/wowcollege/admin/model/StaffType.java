@@ -125,4 +125,12 @@ public class StaffType {
     public void setModifierType(String modifierType) {
         this.modifierType = modifierType;
     }
+
+    public boolean isMandatory() {
+        return isMandatory;
+    }
+
+    public void setMandatory(boolean mandatory) {
+        isMandatory = mandatory;
+    }
 }

@@ -160,7 +160,7 @@ public class FragmentAddStudent extends Fragment {
         storageReference= FirebaseStorage.getInstance().getReference("Profile");
 
         //spSection=view.findViewById(R.id.spSection);
-        //spPaymentOption= view.findViewById(R.id.spPaymentOption);
+        spPaymentOption= view.findViewById(R.id.spPaymentOption);
         tvError=view.findViewById(R.id.tvError);
         spBatch=view.findViewById(R.id.spBatch);
         etUSN = view.findViewById(R.id.etUSN);
@@ -325,7 +325,7 @@ public class FragmentAddStudent extends Fragment {
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        //spPaymentOption.setAdapter(adapter);
+        spPaymentOption.setAdapter(adapter);
         spPaymentOption.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

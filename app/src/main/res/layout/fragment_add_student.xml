@@ -464,12 +464,12 @@
                     android:textColorHint="@color/colorBlack"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
-            <!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/drawablePaddingSize">
+                android:paddingLeft="@dimen/drawablePaddingSize"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -492,7 +492,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorGrey">
+                android:textColorHint="@color/colorGrey"
+                android:visibility="gone">
 
 
                 <EditText
@@ -513,7 +514,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorGrey">
+                android:textColorHint="@color/colorGrey"
+                android:visibility="gone">
 
 
                 <EditText
@@ -530,7 +532,7 @@
                     android:textSize="15sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
+            <!--
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

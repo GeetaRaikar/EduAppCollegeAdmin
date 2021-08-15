@@ -28,7 +28,8 @@
             <item
                 android:id="@+id/nav_feedback"
                 android:icon="@drawable/ic_menu_feedback"
-                android:title="@string/feedback" />
+                android:title="@string/feedback"
+                android:visible="false"/>
         </menu>
     </item>
     <item android:title="@string/student">
@@ -100,7 +101,8 @@
             <item
                 android:id="@+id/nav_section"
                 android:icon="@drawable/ic_menu_classroom"
-                android:title="@string/section" />
+                android:title="@string/section"
+                android:visible="false"/>
             <item
                 android:id="@+id/nav_fee_structure"
                 android:icon="@drawable/ic_services"

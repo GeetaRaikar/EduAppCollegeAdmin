@@ -423,6 +423,7 @@ public class FragmentFeeStructure extends Fragment {
         }
         feeStructureCollectionRef
                 .whereEqualTo("batchId", selectBatch.getId())
+                .orderBy("createdDate", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

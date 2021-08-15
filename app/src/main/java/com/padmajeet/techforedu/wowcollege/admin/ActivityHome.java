@@ -131,7 +131,7 @@ public class ActivityHome extends AppCompatActivity {
                     case R.id.nav_attendance:
                         unCheckAllMenuItems(navigationView.getMenu());
                         menuNav.findItem(R.id.nav_attendance).setChecked(true);
-                        //replaceFragment(new FragmentStudentAttendance(), getString(R.string.studentAttendance));
+                        replaceFragment(new FragmentStudentAttendance(), getString(R.string.studentAttendance));
                         break;
                     /*case R.id.nav_birthday:
                         unCheckAllMenuItems(navigationView.getMenu());
@@ -315,8 +315,8 @@ public class ActivityHome extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.nav_profile) {
             getSupportActionBar().setTitle(R.string.profile);
-            //FragmentProfile fragmentProfile = new FragmentProfile();
-            //replaceFragment(fragmentProfile, "FRAGMENT_PROFILE");
+            FragmentProfile fragmentProfile = new FragmentProfile();
+            replaceFragment(fragmentProfile, "FRAGMENT_PROFILE");
         }
         return super.onOptionsItemSelected(item);
     }
